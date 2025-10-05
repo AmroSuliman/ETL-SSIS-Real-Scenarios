@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36203.30 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "16 Execute SSIS Package from Stored Procedure", "16 Execute SSIS Package from Stored Procedure\16 Execute SSIS Package from Stored Procedure.dtproj", "{0E6EB5A2-C767-CDBD-5562-846CC47C98D1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0E6EB5A2-C767-CDBD-5562-846CC47C98D1}.Development|Default.ActiveCfg = Development
+		{0E6EB5A2-C767-CDBD-5562-846CC47C98D1}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3D8197B9-656C-4982-9EB7-DC7FBD6EFE81}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32407.337
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "62 How to do performance tuning in ssis", "62 How to do performance tuning in ssis\62 How to do performance tuning in ssis.dtproj", "{0C652194-A734-4038-A3F7-F5C0C4AC8BBC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0C652194-A734-4038-A3F7-F5C0C4AC8BBC}.Development|Default.ActiveCfg = Development
+		{0C652194-A734-4038-A3F7-F5C0C4AC8BBC}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1693D56E-0DAE-4492-BB69-6469274CD47C}
+	EndGlobalSection
+EndGlobal

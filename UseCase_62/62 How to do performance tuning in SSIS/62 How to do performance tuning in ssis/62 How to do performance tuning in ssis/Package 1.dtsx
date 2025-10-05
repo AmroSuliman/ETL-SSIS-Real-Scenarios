@@ -1,0 +1,1541 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/30/2022 10:11:18 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-EKJ1P64"
+  DTS:CreatorName="DESKTOP-EKJ1P64\hp"
+  DTS:DTSID="{6F1BB823-BB89-4C1E-9EBD-473ECD872A9C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package 1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{D7224030-98D5-4687-81E3-9E4674842CA0}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-EKJ1P64\SQL2019.Work]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{469CD957-9FE2-4FB0-AE47-26E63F55601F}"
+      DTS:ObjectName="DESKTOP-EKJ1P64\SQL2019.Work">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=WORK;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package 1-{469CD957-9FE2-4FB0-AE47-26E63F55601F}DESKTOP-EKJ1P64\SQL2019.Work;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.WORK]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C282A88D-1145-4B32-8B25-2A473A0AD7BC}"
+      DTS:ObjectName="LocalHost.WORK">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=WORK;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package 1-{C282A88D-1145-4B32-8B25-2A473A0AD7BC}LocalHost.WORK;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\After"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{0AB5E522-4B7E-4C28-B2D5-962CB4302395}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="After">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\After\Load data"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{35830A5F-755C-4EA5-A650-3327E9963E5E}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Load data"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\After\Load data\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Email]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\After\Load data\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DESKTOP-EKJ1P64\SQL2019.Work]"
+                      connectionManagerRefId="Package.ConnectionManagers[DESKTOP-EKJ1P64\SQL2019.Work]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\After\Load data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\After\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Email_Id]"
+                          cachedDataType="i4"
+                          cachedName="Email_Id"
+                          externalMetadataColumnId="Package\After\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Email_Id]"
+                          lineageId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Email_Id]" />
+                        <inputColumn
+                          refId="Package\After\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[first_name]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="first_name"
+                          externalMetadataColumnId="Package\After\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[first_name]"
+                          lineageId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[first_name]" />
+                        <inputColumn
+                          refId="Package\After\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[last_name]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="last_name"
+                          externalMetadataColumnId="Package\After\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[last_name]"
+                          lineageId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[last_name]" />
+                        <inputColumn
+                          refId="Package\After\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[email]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="email"
+                          externalMetadataColumnId="Package\After\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[email]"
+                          lineageId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[email]" />
+                        <inputColumn
+                          refId="Package\After\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Address]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Address"
+                          externalMetadataColumnId="Package\After\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Address]"
+                          lineageId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Address]" />
+                        <inputColumn
+                          refId="Package\After\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[City]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="City"
+                          externalMetadataColumnId="Package\After\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                          lineageId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[City]" />
+                        <inputColumn
+                          refId="Package\After\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[State]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="State"
+                          externalMetadataColumnId="Package\After\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                          lineageId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[State]" />
+                        <inputColumn
+                          refId="Package\After\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Zip]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Zip"
+                          externalMetadataColumnId="Package\After\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Zip]"
+                          lineageId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Zip]" />
+                        <inputColumn
+                          refId="Package\After\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SSN]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="SSN"
+                          externalMetadataColumnId="Package\After\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SSN]"
+                          lineageId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[SSN]" />
+                        <inputColumn
+                          refId="Package\After\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Birthdate]"
+                          cachedDataType="wstr"
+                          cachedLength="10"
+                          cachedName="Birthdate"
+                          externalMetadataColumnId="Package\After\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Birthdate]"
+                          lineageId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Birthdate]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\After\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Email_Id]"
+                          dataType="i4"
+                          name="Email_Id" />
+                        <externalMetadataColumn
+                          refId="Package\After\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[first_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="first_name" />
+                        <externalMetadataColumn
+                          refId="Package\After\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[last_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="last_name" />
+                        <externalMetadataColumn
+                          refId="Package\After\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[email]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="email" />
+                        <externalMetadataColumn
+                          refId="Package\After\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Address]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Address" />
+                        <externalMetadataColumn
+                          refId="Package\After\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="City" />
+                        <externalMetadataColumn
+                          refId="Package\After\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="State" />
+                        <externalMetadataColumn
+                          refId="Package\After\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Zip]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Zip" />
+                        <externalMetadataColumn
+                          refId="Package\After\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SSN]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="SSN" />
+                        <externalMetadataColumn
+                          refId="Package\After\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Birthdate]"
+                          dataType="wstr"
+                          length="10"
+                          name="Birthdate" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\After\Load data\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\After\Load data\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\After\Load data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\After\Load data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\After\Load data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\After\Load data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\After\Load data\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from staging_Email</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\After\Load data\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DESKTOP-EKJ1P64\SQL2019.Work]"
+                      connectionManagerRefId="Package.ConnectionManagers[DESKTOP-EKJ1P64\SQL2019.Work]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Email_Id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Email_Id]"
+                          lineageId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Email_Id]"
+                          name="Email_Id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[first_name]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[first_name]"
+                          length="50"
+                          lineageId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[first_name]"
+                          name="first_name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[last_name]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[last_name]"
+                          length="50"
+                          lineageId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[last_name]"
+                          name="last_name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[email]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[email]"
+                          length="50"
+                          lineageId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[email]"
+                          name="email"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Address]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Address]"
+                          length="50"
+                          lineageId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Address]"
+                          name="Address"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[City]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                          length="50"
+                          lineageId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[City]"
+                          name="City"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[State]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                          length="50"
+                          lineageId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[State]"
+                          name="State"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Zip]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Zip]"
+                          length="50"
+                          lineageId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Zip]"
+                          name="Zip"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[SSN]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SSN]"
+                          length="50"
+                          lineageId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[SSN]"
+                          name="SSN"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Birthdate]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Birthdate]"
+                          length="10"
+                          lineageId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Birthdate]"
+                          name="Birthdate"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Email_Id]"
+                          dataType="i4"
+                          name="Email_Id" />
+                        <externalMetadataColumn
+                          refId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[first_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="first_name" />
+                        <externalMetadataColumn
+                          refId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[last_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="last_name" />
+                        <externalMetadataColumn
+                          refId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[email]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="email" />
+                        <externalMetadataColumn
+                          refId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Address]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Address" />
+                        <externalMetadataColumn
+                          refId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="City" />
+                        <externalMetadataColumn
+                          refId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="State" />
+                        <externalMetadataColumn
+                          refId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Zip]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Zip" />
+                        <externalMetadataColumn
+                          refId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SSN]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="SSN" />
+                        <externalMetadataColumn
+                          refId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Birthdate]"
+                          dataType="wstr"
+                          length="10"
+                          name="Birthdate" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Email_Id]"
+                          dataType="i4"
+                          lineageId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Email_Id]"
+                          name="Email_Id" />
+                        <outputColumn
+                          refId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[first_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[first_name]"
+                          name="first_name" />
+                        <outputColumn
+                          refId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[last_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[last_name]"
+                          name="last_name" />
+                        <outputColumn
+                          refId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[email]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[email]"
+                          name="email" />
+                        <outputColumn
+                          refId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Address]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Address]"
+                          name="Address" />
+                        <outputColumn
+                          refId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[City]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[City]"
+                          name="City" />
+                        <outputColumn
+                          refId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[State]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[State]"
+                          name="State" />
+                        <outputColumn
+                          refId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Zip]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Zip]"
+                          name="Zip" />
+                        <outputColumn
+                          refId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SSN]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SSN]"
+                          name="SSN" />
+                        <outputColumn
+                          refId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Birthdate]"
+                          dataType="wstr"
+                          length="10"
+                          lineageId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Birthdate]"
+                          name="Birthdate" />
+                        <outputColumn
+                          refId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\After\Load data.Paths[OLE DB Source Output]"
+                  endId="Package\After\Load data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\After\Load data\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\After\ReCreated the indexes back"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{38f4406a-dd20-4d77-afab-61856c35f06c}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ReCreated the indexes back"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{C282A88D-1145-4B32-8B25-2A473A0AD7BC}"
+              SQLTask:SqlStatementSource="IF NOT EXISTS (SELECT *  FROM sys.indexes  WHERE name='ix_Email_Id' AND object_id = OBJECT_ID('Email'))&#xA;create clustered index ix_Email_Id on Email(Email_Id)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\After\Remove the indexes from dest table"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{95AFC58A-56CA-4B7B-9341-5427788BF0C8}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Remove the indexes from dest table"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{C282A88D-1145-4B32-8B25-2A473A0AD7BC}"
+              SQLTask:SqlStatementSource="IF EXISTS (SELECT *  FROM sys.indexes  WHERE name='ix_Email_Id' AND object_id = OBJECT_ID('Email'))&#xA;drop index Email.ix_Email_Id" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\After.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{E9A864F3-117F-4030-8754-C663386A9CD0}"
+          DTS:From="Package\After\Remove the indexes from dest table"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\After\Load data" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\After.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{221790F1-3921-495E-A1DD-D2712E601948}"
+          DTS:From="Package\After\Load data"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\After\ReCreated the indexes back" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Before"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{6DC5E2DB-BD0A-4853-99AB-D18CE834D0FD}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Before">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Before\Load data"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{a2f88ed6-02d0-40b3-b8bb-2ac9a7baeefc}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Load data"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Before\Load data\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Email]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Before\Load data\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DESKTOP-EKJ1P64\SQL2019.Work]"
+                      connectionManagerRefId="Package.ConnectionManagers[DESKTOP-EKJ1P64\SQL2019.Work]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Before\Load data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Before\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Email_Id]"
+                          cachedDataType="i4"
+                          cachedName="Email_Id"
+                          externalMetadataColumnId="Package\Before\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Email_Id]"
+                          lineageId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Email_Id]" />
+                        <inputColumn
+                          refId="Package\Before\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[first_name]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="first_name"
+                          externalMetadataColumnId="Package\Before\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[first_name]"
+                          lineageId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[first_name]" />
+                        <inputColumn
+                          refId="Package\Before\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[last_name]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="last_name"
+                          externalMetadataColumnId="Package\Before\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[last_name]"
+                          lineageId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[last_name]" />
+                        <inputColumn
+                          refId="Package\Before\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[email]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="email"
+                          externalMetadataColumnId="Package\Before\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[email]"
+                          lineageId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[email]" />
+                        <inputColumn
+                          refId="Package\Before\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Address]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Address"
+                          externalMetadataColumnId="Package\Before\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Address]"
+                          lineageId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Address]" />
+                        <inputColumn
+                          refId="Package\Before\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[City]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="City"
+                          externalMetadataColumnId="Package\Before\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                          lineageId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[City]" />
+                        <inputColumn
+                          refId="Package\Before\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[State]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="State"
+                          externalMetadataColumnId="Package\Before\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                          lineageId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[State]" />
+                        <inputColumn
+                          refId="Package\Before\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Zip]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Zip"
+                          externalMetadataColumnId="Package\Before\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Zip]"
+                          lineageId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Zip]" />
+                        <inputColumn
+                          refId="Package\Before\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SSN]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="SSN"
+                          externalMetadataColumnId="Package\Before\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SSN]"
+                          lineageId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[SSN]" />
+                        <inputColumn
+                          refId="Package\Before\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Birthdate]"
+                          cachedDataType="wstr"
+                          cachedLength="10"
+                          cachedName="Birthdate"
+                          externalMetadataColumnId="Package\Before\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Birthdate]"
+                          lineageId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Birthdate]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Before\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Email_Id]"
+                          dataType="i4"
+                          name="Email_Id" />
+                        <externalMetadataColumn
+                          refId="Package\Before\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[first_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="first_name" />
+                        <externalMetadataColumn
+                          refId="Package\Before\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[last_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="last_name" />
+                        <externalMetadataColumn
+                          refId="Package\Before\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[email]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="email" />
+                        <externalMetadataColumn
+                          refId="Package\Before\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Address]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Address" />
+                        <externalMetadataColumn
+                          refId="Package\Before\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="City" />
+                        <externalMetadataColumn
+                          refId="Package\Before\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="State" />
+                        <externalMetadataColumn
+                          refId="Package\Before\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Zip]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Zip" />
+                        <externalMetadataColumn
+                          refId="Package\Before\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SSN]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="SSN" />
+                        <externalMetadataColumn
+                          refId="Package\Before\Load data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Birthdate]"
+                          dataType="wstr"
+                          length="10"
+                          name="Birthdate" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Before\Load data\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Before\Load data\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Before\Load data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Before\Load data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Before\Load data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Before\Load data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Before\Load data\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from staging_Email</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Before\Load data\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DESKTOP-EKJ1P64\SQL2019.Work]"
+                      connectionManagerRefId="Package.ConnectionManagers[DESKTOP-EKJ1P64\SQL2019.Work]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Email_Id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Email_Id]"
+                          lineageId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Email_Id]"
+                          name="Email_Id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[first_name]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[first_name]"
+                          length="50"
+                          lineageId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[first_name]"
+                          name="first_name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[last_name]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[last_name]"
+                          length="50"
+                          lineageId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[last_name]"
+                          name="last_name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[email]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[email]"
+                          length="50"
+                          lineageId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[email]"
+                          name="email"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Address]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Address]"
+                          length="50"
+                          lineageId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Address]"
+                          name="Address"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[City]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                          length="50"
+                          lineageId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[City]"
+                          name="City"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[State]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                          length="50"
+                          lineageId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[State]"
+                          name="State"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Zip]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Zip]"
+                          length="50"
+                          lineageId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Zip]"
+                          name="Zip"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[SSN]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SSN]"
+                          length="50"
+                          lineageId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[SSN]"
+                          name="SSN"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Birthdate]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Birthdate]"
+                          length="10"
+                          lineageId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Birthdate]"
+                          name="Birthdate"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Email_Id]"
+                          dataType="i4"
+                          name="Email_Id" />
+                        <externalMetadataColumn
+                          refId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[first_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="first_name" />
+                        <externalMetadataColumn
+                          refId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[last_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="last_name" />
+                        <externalMetadataColumn
+                          refId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[email]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="email" />
+                        <externalMetadataColumn
+                          refId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Address]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Address" />
+                        <externalMetadataColumn
+                          refId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="City" />
+                        <externalMetadataColumn
+                          refId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="State" />
+                        <externalMetadataColumn
+                          refId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Zip]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Zip" />
+                        <externalMetadataColumn
+                          refId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SSN]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="SSN" />
+                        <externalMetadataColumn
+                          refId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Birthdate]"
+                          dataType="wstr"
+                          length="10"
+                          name="Birthdate" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Email_Id]"
+                          dataType="i4"
+                          lineageId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Email_Id]"
+                          name="Email_Id" />
+                        <outputColumn
+                          refId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[first_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[first_name]"
+                          name="first_name" />
+                        <outputColumn
+                          refId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[last_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[last_name]"
+                          name="last_name" />
+                        <outputColumn
+                          refId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[email]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[email]"
+                          name="email" />
+                        <outputColumn
+                          refId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Address]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Address]"
+                          name="Address" />
+                        <outputColumn
+                          refId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[City]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[City]"
+                          name="City" />
+                        <outputColumn
+                          refId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[State]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[State]"
+                          name="State" />
+                        <outputColumn
+                          refId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Zip]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Zip]"
+                          name="Zip" />
+                        <outputColumn
+                          refId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SSN]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SSN]"
+                          name="SSN" />
+                        <outputColumn
+                          refId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Birthdate]"
+                          dataType="wstr"
+                          length="10"
+                          lineageId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Birthdate]"
+                          name="Birthdate" />
+                        <outputColumn
+                          refId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Before\Load data.Paths[OLE DB Source Output]"
+                  endId="Package\Before\Load data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Before\Load data\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="128,41.6"
+          Id="Package\After\Load data"
+          TopLeft="50.5,104" />
+        <NodeLayout
+          Size="216.8,41.6"
+          Id="Package\After\ReCreated the indexes back"
+          TopLeft="21,180" />
+        <NodeLayout
+          Size="255.2,41.6"
+          Id="Package\After\Remove the indexes from dest table"
+          TopLeft="5.5,8" />
+        <EdgeLayout
+          Id="Package\After.PrecedenceConstraints[Constraint]"
+          TopLeft="133,50">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-18.5,54"
+              Start="0,0"
+              End="-18.5,46.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23"
+                    Point2="0,27"
+                    Point3="-4,27" />
+                  <mssgle:LineSegment
+                    End="-14.5,27" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-14.5,27"
+                    Point2="-18.5,27"
+                    Point3="-18.5,31" />
+                  <mssgle:LineSegment
+                    End="-18.5,46.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\After.PrecedenceConstraints[Constraint 1]"
+          TopLeft="114.5,146">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="15,34"
+              Start="0,0"
+              End="15,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13"
+                    Point2="0,17"
+                    Point3="4,17" />
+                  <mssgle:LineSegment
+                    End="11,17" />
+                  <mssgle:CubicBezierSegment
+                    Point1="11,17"
+                    Point2="15,17"
+                    Point3="15,21" />
+                  <mssgle:LineSegment
+                    End="15,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="265.6,276.8"
+          Size="265.6,320"
+          Id="Package\After"
+          TopLeft="370,77" />
+        <NodeLayout
+          Size="128,41.6"
+          Id="Package\Before\Load data"
+          TopLeft="27,13" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="204.8,76.8"
+          Size="204.8,120"
+          Id="Package\Before"
+          TopLeft="32,85" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\After\Load data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="156.8,41.6"
+          Id="Package\After\Load data\OLE DB Source"
+          TopLeft="262,56" />
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\After\Load data\OLE DB Destination"
+          TopLeft="234,254" />
+        <EdgeLayout
+          Id="Package\After\Load data.Paths[OLE DB Source Output]"
+          TopLeft="340.5,98">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-18,156"
+              Start="0,0"
+              End="-18,148.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,74" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,74"
+                    Point2="0,78"
+                    Point3="-4,78" />
+                  <mssgle:LineSegment
+                    End="-14,78" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-14,78"
+                    Point2="-18,78"
+                    Point3="-18,82" />
+                  <mssgle:LineSegment
+                    End="-18,148.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\After\Load data\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\After\Load data\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Before\Load data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="156.8,41.6"
+          Id="Package\Before\Load data\OLE DB Source"
+          TopLeft="262,56" />
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\Before\Load data\OLE DB Destination"
+          TopLeft="234,254" />
+        <EdgeLayout
+          Id="Package\Before\Load data.Paths[OLE DB Source Output]"
+          TopLeft="340.5,98">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-18,156"
+              Start="0,0"
+              End="-18,148.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,74" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,74"
+                    Point2="0,78"
+                    Point3="-4,78" />
+                  <mssgle:LineSegment
+                    End="-14,78" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-14,78"
+                    Point2="-18,78"
+                    Point3="-18,82" />
+                  <mssgle:LineSegment
+                    End="-18,148.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Before\Load data\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Before\Load data\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

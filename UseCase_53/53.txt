@@ -1,0 +1,62 @@
+
+
+### **1. Full Load**
+
+* **Definition:** Loading the **entire dataset** from source to destination every time.
+* **Process:** The target table is usually **truncated (emptied)** and then repopulated with all data from the source.
+* **Use Case:**
+
+  * Initial data load.
+  * When the data volume is small.
+  * When business rules or data quality issues require a full refresh.
+
+✅ **Advantages:**
+
+* Simple to implement.
+* Guarantees full synchronization.
+
+❌ **Disadvantages:**
+
+* Time-consuming for large datasets.
+* High resource usage (CPU, memory, network, storage).
+* Not efficient for daily/real-time ETL.
+
+---
+
+### **2. Incremental Load**
+
+* **Definition:** Loading only the **new or changed records** (inserts, updates, deletes) from source to target.
+
+* **Process:**
+
+  * Identify changes (using **timestamps, triggers, CDC (Change Data Capture), hash comparisons, or log tables**).
+  * Apply only the delta (insert/update/delete) to the target table.
+
+* **Use Case:**
+
+  * Daily/periodic refresh.
+  * Large datasets where only a small portion changes.
+  * Near real-time data integration.
+
+✅ **Advantages:**
+
+* Much faster and more efficient.
+* Reduces ETL processing time and system load.
+* Scales better for big data.
+
+❌ **Disadvantages:**
+
+* More complex to implement.
+* Requires proper change detection logic.
+* Harder to recover if something goes wrong compared to a full refresh.
+
+---
+
+### **Quick Example:**
+
+* **Full Load:**
+  Every night, truncate the `Sales` table and reload all **10 million records**.
+* **Incremental Load:**
+  Every night, load only the **100,000 new/updated sales records** since last load.
+
+

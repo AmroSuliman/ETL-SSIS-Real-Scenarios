@@ -1,0 +1,6 @@
+select a.Id, b.Email_Id, 6 as MatchCode
+from Customer a
+inner join [Email] b
+    on a.last_name = b.last_name
+   and a.first_name = b.first_name
+   and a.Birthdate = b.Birthdate

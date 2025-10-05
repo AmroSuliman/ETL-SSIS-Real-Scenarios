@@ -58,6 +58,6 @@ This work is shared with the data community to support **knowledge sharing, coll
 ---
 
 ## 📫 Connect
-- **Author:** Eng. Amr Soliman  
+- **Author:** Amr Soliman  
 - **LinkedIn:** [www.linkedin.com/in/amr-soliman-0b4761179](https://www.linkedin.com/in/amr-soliman-0b4761179)  
 - **GitHub:** [github.com/AmroSuliman](https://github.com/AmroSuliman)  

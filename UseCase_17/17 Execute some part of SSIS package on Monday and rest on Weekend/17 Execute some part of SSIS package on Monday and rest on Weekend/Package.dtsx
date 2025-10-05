@@ -1,0 +1,1811 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/11/2025 4:00:45 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="AMR"
+  DTS:CreatorName="CONTACTGROUP\amr.soliman"
+  DTS:DTSID="{B2C36E40-0395-40BE-82D9-B74722B77406}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{109FFE3A-3950-4340-8E12-E3D168C391B4}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.SSIS]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{BF187B96-89A8-418A-A8B1-458E41166D6B}"
+      DTS:ObjectName="LocalHost.SSIS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=SSIS;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{924836E1-BDAD-4D4D-941D-BBC086B65A8D}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="DayName">
+      <DTS:VariableValue
+        DTS:DataType="8">Sunday</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Execute on Monday"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{15E17E7F-5354-415E-A3C6-C77831F043FF}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute on Monday">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Execute on Monday\Load Data"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{7AFCB273-73CE-4E25-ACEC-DCE193015051}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Load Data"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Execute on Monday\Load Data\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Emails16]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Execute on Monday\Load Data\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.SSIS]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.SSIS]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Execute on Monday\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Execute on Monday\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Id]"
+                          cachedDataType="i4"
+                          cachedName="Id"
+                          externalMetadataColumnId="Package\Execute on Monday\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                          lineageId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Id]" />
+                        <inputColumn
+                          refId="Package\Execute on Monday\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[First_name]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="First_name"
+                          externalMetadataColumnId="Package\Execute on Monday\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[First_name]"
+                          lineageId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[First_name]" />
+                        <inputColumn
+                          refId="Package\Execute on Monday\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Last_name]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Last_name"
+                          externalMetadataColumnId="Package\Execute on Monday\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Last_name]"
+                          lineageId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Last_name]" />
+                        <inputColumn
+                          refId="Package\Execute on Monday\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Email]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Email"
+                          externalMetadataColumnId="Package\Execute on Monday\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                          lineageId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Email]" />
+                        <inputColumn
+                          refId="Package\Execute on Monday\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Gender]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="Gender"
+                          externalMetadataColumnId="Package\Execute on Monday\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                          lineageId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Gender]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Execute on Monday\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                          dataType="i4"
+                          name="Id" />
+                        <externalMetadataColumn
+                          refId="Package\Execute on Monday\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[First_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="First_name" />
+                        <externalMetadataColumn
+                          refId="Package\Execute on Monday\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Last_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Last_name" />
+                        <externalMetadataColumn
+                          refId="Package\Execute on Monday\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Email" />
+                        <externalMetadataColumn
+                          refId="Package\Execute on Monday\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="Gender" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Execute on Monday\Load Data\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Execute on Monday\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Execute on Monday\Load Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Execute on Monday\Load Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Execute on Monday\Load Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Execute on Monday\Load Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Execute on Monday\Load Data\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Emails]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Execute on Monday\Load Data\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.SSIS]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.SSIS]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                          lineageId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Id]"
+                          name="Id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[First_name]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[First_name]"
+                          length="50"
+                          lineageId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[First_name]"
+                          name="First_name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Last_name]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Last_name]"
+                          length="50"
+                          lineageId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Last_name]"
+                          name="Last_name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Email]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                          length="50"
+                          lineageId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Email]"
+                          name="Email"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Gender]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Gender]"
+                          length="1"
+                          lineageId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Gender]"
+                          name="Gender"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                          dataType="i4"
+                          name="Id" />
+                        <externalMetadataColumn
+                          refId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[First_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="First_name" />
+                        <externalMetadataColumn
+                          refId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Last_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Last_name" />
+                        <externalMetadataColumn
+                          refId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Email" />
+                        <externalMetadataColumn
+                          refId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Gender]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="Gender" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Id]"
+                          dataType="i4"
+                          lineageId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Id]"
+                          name="Id" />
+                        <outputColumn
+                          refId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[First_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[First_name]"
+                          name="First_name" />
+                        <outputColumn
+                          refId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Last_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Last_name]"
+                          name="Last_name" />
+                        <outputColumn
+                          refId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Email]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Email]"
+                          name="Email" />
+                        <outputColumn
+                          refId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Gender]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Gender]"
+                          name="Gender" />
+                        <outputColumn
+                          refId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Execute on Monday\Load Data.Paths[OLE DB Source Output]"
+                  endId="Package\Execute on Monday\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Execute on Monday\Load Data\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Execute on Monday\Run Script"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{2A1975FA-6756-474A-B115-20AB6C54E358}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Run Script"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{BF187B96-89A8-418A-A8B1-458E41166D6B}"
+              SQLTask:SqlStatementSource="truncate table [dbo].[Emails16]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Execute on Monday.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{5D39C661-ACE7-4DE2-BAAE-C10D72B3A197}"
+          DTS:From="Package\Execute on Monday\Load Data"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Execute on Monday\Run Script" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute on Weekend"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{d8b59a1b-9c93-49dc-b82c-4d355314a5a7}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute on Weekend">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Execute on Weekend\Load Data"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{f2433d19-dc2a-4952-a97b-6c01012091cd}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Load Data"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Execute on Weekend\Load Data\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Emails16]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Execute on Weekend\Load Data\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.SSIS]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.SSIS]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Execute on Weekend\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Execute on Weekend\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Id]"
+                          cachedDataType="i4"
+                          cachedName="Id"
+                          externalMetadataColumnId="Package\Execute on Weekend\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                          lineageId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Id]" />
+                        <inputColumn
+                          refId="Package\Execute on Weekend\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[First_name]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="First_name"
+                          externalMetadataColumnId="Package\Execute on Weekend\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[First_name]"
+                          lineageId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[First_name]" />
+                        <inputColumn
+                          refId="Package\Execute on Weekend\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Last_name]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Last_name"
+                          externalMetadataColumnId="Package\Execute on Weekend\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Last_name]"
+                          lineageId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Last_name]" />
+                        <inputColumn
+                          refId="Package\Execute on Weekend\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Email]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Email"
+                          externalMetadataColumnId="Package\Execute on Weekend\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                          lineageId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Email]" />
+                        <inputColumn
+                          refId="Package\Execute on Weekend\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Gender]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="Gender"
+                          externalMetadataColumnId="Package\Execute on Weekend\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                          lineageId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Gender]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Execute on Weekend\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                          dataType="i4"
+                          name="Id" />
+                        <externalMetadataColumn
+                          refId="Package\Execute on Weekend\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[First_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="First_name" />
+                        <externalMetadataColumn
+                          refId="Package\Execute on Weekend\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Last_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Last_name" />
+                        <externalMetadataColumn
+                          refId="Package\Execute on Weekend\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Email" />
+                        <externalMetadataColumn
+                          refId="Package\Execute on Weekend\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="Gender" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Execute on Weekend\Load Data\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Execute on Weekend\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Execute on Weekend\Load Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Execute on Weekend\Load Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Execute on Weekend\Load Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Execute on Weekend\Load Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Execute on Weekend\Load Data\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Emails]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Execute on Weekend\Load Data\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.SSIS]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.SSIS]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                          lineageId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Id]"
+                          name="Id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[First_name]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[First_name]"
+                          length="50"
+                          lineageId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[First_name]"
+                          name="First_name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Last_name]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Last_name]"
+                          length="50"
+                          lineageId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Last_name]"
+                          name="Last_name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Email]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                          length="50"
+                          lineageId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Email]"
+                          name="Email"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Gender]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Gender]"
+                          length="1"
+                          lineageId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Gender]"
+                          name="Gender"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                          dataType="i4"
+                          name="Id" />
+                        <externalMetadataColumn
+                          refId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[First_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="First_name" />
+                        <externalMetadataColumn
+                          refId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Last_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Last_name" />
+                        <externalMetadataColumn
+                          refId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Email" />
+                        <externalMetadataColumn
+                          refId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Gender]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="Gender" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Id]"
+                          dataType="i4"
+                          lineageId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Id]"
+                          name="Id" />
+                        <outputColumn
+                          refId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[First_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[First_name]"
+                          name="First_name" />
+                        <outputColumn
+                          refId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Last_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Last_name]"
+                          name="Last_name" />
+                        <outputColumn
+                          refId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Email]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Email]"
+                          name="Email" />
+                        <outputColumn
+                          refId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Gender]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Gender]"
+                          name="Gender" />
+                        <outputColumn
+                          refId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Execute on Weekend\Load Data.Paths[OLE DB Source Output]"
+                  endId="Package\Execute on Weekend\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Execute on Weekend\Load Data\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Execute on Weekend\Run Script"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{9d4db6ba-3f3b-4b39-976b-4c2cd0977812}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Run Script"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{BF187B96-89A8-418A-A8B1-458E41166D6B}"
+              SQLTask:SqlStatementSource="truncate table [dbo].[Emails16]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Execute on Weekend.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{94e96020-6dc2-4c22-9b98-967b12c93dd7}"
+          DTS:From="Package\Execute on Weekend\Load Data"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Execute on Weekend\Run Script" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute on Wendesday"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{0f493635-40ea-49de-b432-abe3555b2b81}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute on Wendesday">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Execute on Wendesday\Load Data"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{a1e87d79-4fb8-4292-bd94-bbc68b276ce7}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Load Data"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Execute on Wendesday\Load Data\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Emails16]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Execute on Wendesday\Load Data\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.SSIS]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.SSIS]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Execute on Wendesday\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Execute on Wendesday\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Id]"
+                          cachedDataType="i4"
+                          cachedName="Id"
+                          externalMetadataColumnId="Package\Execute on Wendesday\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                          lineageId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Id]" />
+                        <inputColumn
+                          refId="Package\Execute on Wendesday\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[First_name]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="First_name"
+                          externalMetadataColumnId="Package\Execute on Wendesday\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[First_name]"
+                          lineageId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[First_name]" />
+                        <inputColumn
+                          refId="Package\Execute on Wendesday\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Last_name]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Last_name"
+                          externalMetadataColumnId="Package\Execute on Wendesday\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Last_name]"
+                          lineageId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Last_name]" />
+                        <inputColumn
+                          refId="Package\Execute on Wendesday\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Email]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Email"
+                          externalMetadataColumnId="Package\Execute on Wendesday\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                          lineageId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Email]" />
+                        <inputColumn
+                          refId="Package\Execute on Wendesday\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Gender]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="Gender"
+                          externalMetadataColumnId="Package\Execute on Wendesday\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                          lineageId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Gender]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Execute on Wendesday\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                          dataType="i4"
+                          name="Id" />
+                        <externalMetadataColumn
+                          refId="Package\Execute on Wendesday\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[First_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="First_name" />
+                        <externalMetadataColumn
+                          refId="Package\Execute on Wendesday\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Last_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Last_name" />
+                        <externalMetadataColumn
+                          refId="Package\Execute on Wendesday\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Email" />
+                        <externalMetadataColumn
+                          refId="Package\Execute on Wendesday\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="Gender" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Execute on Wendesday\Load Data\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Execute on Wendesday\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Execute on Wendesday\Load Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Execute on Wendesday\Load Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Execute on Wendesday\Load Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Execute on Wendesday\Load Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Execute on Wendesday\Load Data\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Emails]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Execute on Wendesday\Load Data\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.SSIS]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.SSIS]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                          lineageId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Id]"
+                          name="Id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[First_name]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[First_name]"
+                          length="50"
+                          lineageId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[First_name]"
+                          name="First_name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Last_name]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Last_name]"
+                          length="50"
+                          lineageId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Last_name]"
+                          name="Last_name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Email]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                          length="50"
+                          lineageId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Email]"
+                          name="Email"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Gender]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Gender]"
+                          length="1"
+                          lineageId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Gender]"
+                          name="Gender"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                          dataType="i4"
+                          name="Id" />
+                        <externalMetadataColumn
+                          refId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[First_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="First_name" />
+                        <externalMetadataColumn
+                          refId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Last_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Last_name" />
+                        <externalMetadataColumn
+                          refId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Email" />
+                        <externalMetadataColumn
+                          refId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Gender]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="Gender" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Id]"
+                          dataType="i4"
+                          lineageId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Id]"
+                          name="Id" />
+                        <outputColumn
+                          refId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[First_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[First_name]"
+                          name="First_name" />
+                        <outputColumn
+                          refId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Last_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Last_name]"
+                          name="Last_name" />
+                        <outputColumn
+                          refId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Email]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Email]"
+                          name="Email" />
+                        <outputColumn
+                          refId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Gender]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Gender]"
+                          name="Gender" />
+                        <outputColumn
+                          refId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Execute on Wendesday\Load Data.Paths[OLE DB Source Output]"
+                  endId="Package\Execute on Wendesday\Load Data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Execute on Wendesday\Load Data\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Execute on Wendesday\Run Script"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{6435a91a-1348-44f0-b801-66a02472fe7c}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Run Script"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{BF187B96-89A8-418A-A8B1-458E41166D6B}"
+              SQLTask:SqlStatementSource="truncate table [dbo].[Emails16]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Execute on Wendesday.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{a70d7a0f-df57-47bc-81fd-959467c102b4}"
+          DTS:From="Package\Execute on Wendesday\Load Data"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Execute on Wendesday\Run Script" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\GET TODAY NAME"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{59527160-5B97-42F7-A25C-ECF915099A8C}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="GET TODAY NAME"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{BF187B96-89A8-418A-A8B1-458E41166D6B}"
+          SQLTask:SqlStatementSource="SELECT datename(DW,GETDATE())"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::DayName" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{D9C9540F-0F24-464D-B8A2-279D6755DB75}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::DayName] == &quot;Monday&quot;"
+      DTS:From="Package\GET TODAY NAME"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Execute on Monday" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{A67A9F44-DC09-4743-9316-6105EB2D4F68}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::DayName] == &quot;Wednesday&quot;"
+      DTS:From="Package\GET TODAY NAME"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Execute on Wendesday" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{C8E59EA2-CDA5-491E-B7A4-CB7282BFBA10}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::DayName] == &quot;Saturday&quot; || @[User::DayName] == &quot;Sunday&quot;"
+      DTS:From="Package\GET TODAY NAME"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Execute on Weekend" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="139.2,79.2"
+          Id="Package\Execute on Monday\Load Data"
+          TopLeft="41.299994946023,15.9999985535939" />
+        <NodeLayout
+          Size="127.2,79.2"
+          Id="Package\Execute on Monday\Run Script"
+          TopLeft="52.0333278240431,108.733331242071" />
+        <EdgeLayout
+          Id="Package\Execute on Monday.PrecedenceConstraints[Constraint]"
+          TopLeft="41.299994946023,55.5999985535939">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="10.7333328780201,92.7333326884772"
+              Start="0,0"
+              End="3.23333287802007,92.7333326884772">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-18.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-18.5,0"
+                    Point2="-22.5,0"
+                    Point3="-22.5,4" />
+                  <mssgle:LineSegment
+                    End="-22.5,88.7333326884772" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-22.5,88.7333326884772"
+                    Point2="-22.5,92.7333326884772"
+                    Point3="-18.5,92.7333326884772" />
+                  <mssgle:LineSegment
+                    End="3.23333287802007,92.7333326884772" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="268.8,239.2"
+          Size="268.8,282.4"
+          Id="Package\Execute on Monday"
+          TopLeft="76.6666624777847,267.799998137752" />
+        <NodeLayout
+          Size="139.2,79.2"
+          Id="Package\Execute on Wendesday\Load Data"
+          TopLeft="41.299994946023,15.9999985535939" />
+        <NodeLayout
+          Size="127.2,79.2"
+          Id="Package\Execute on Wendesday\Run Script"
+          TopLeft="52.0333278240431,108.733331242071" />
+        <EdgeLayout
+          Id="Package\Execute on Wendesday.PrecedenceConstraints[Constraint]"
+          TopLeft="41.299994946023,55.5999985535939">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="10.7333328780201,92.7333326884772"
+              Start="0,0"
+              End="3.23333287802007,92.7333326884772">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-18.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-18.5,0"
+                    Point2="-22.5,0"
+                    Point3="-22.5,4" />
+                  <mssgle:LineSegment
+                    End="-22.5,88.7333326884772" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-22.5,88.7333326884772"
+                    Point2="-22.5,92.7333326884772"
+                    Point3="-18.5,92.7333326884772" />
+                  <mssgle:LineSegment
+                    End="3.23333287802007,92.7333326884772" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="268.8,239.2"
+          Size="268.8,282.4"
+          Id="Package\Execute on Wendesday"
+          TopLeft="355.833313891458,231.599998662074" />
+        <NodeLayout
+          Size="139.2,79.2"
+          Id="Package\Execute on Weekend\Load Data"
+          TopLeft="41.299994946023,15.9999985535939" />
+        <NodeLayout
+          Size="127.2,79.2"
+          Id="Package\Execute on Weekend\Run Script"
+          TopLeft="52.0333278240431,108.733331242071" />
+        <EdgeLayout
+          Id="Package\Execute on Weekend.PrecedenceConstraints[Constraint]"
+          TopLeft="41.299994946023,55.5999985535939">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="10.7333328780201,92.7333326884772"
+              Start="0,0"
+              End="3.23333287802007,92.7333326884772">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-18.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-18.5,0"
+                    Point2="-22.5,0"
+                    Point3="-22.5,4" />
+                  <mssgle:LineSegment
+                    End="-22.5,88.7333326884772" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-22.5,88.7333326884772"
+                    Point2="-22.5,92.7333326884772"
+                    Point3="-18.5,92.7333326884772" />
+                  <mssgle:LineSegment
+                    End="3.23333287802007,92.7333326884772" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="268.8,239.2"
+          Size="268.8,282.4"
+          Id="Package\Execute on Weekend"
+          TopLeft="636.566632017329,268.533331766394" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\GET TODAY NAME"
+          TopLeft="400.63331498421,42.7999997468789" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="445.43331498421,84.3999997468789">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-234.366652506425,183.399998390873"
+              Start="0,0"
+              End="-234.366652506425,175.899998390873">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,59.0085884042264" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,59.0085884042264"
+                    Point2="0,63.0085884042264"
+                    Point3="-4,63.0085884042264" />
+                  <mssgle:LineSegment
+                    End="-230.366652506425,63.0085884042264" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-230.366652506425,63.0085884042264"
+                    Point2="-234.366652506425,63.0085884042264"
+                    Point3="-234.366652506425,67.0085884042264" />
+                  <mssgle:LineSegment
+                    End="-234.366652506425,175.899998390873" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-125.183326253213,68.0085884042264,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="488.233314437834,84.3999997468789">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,147.199998915195"
+              Start="0,0"
+              End="0,139.699998915195">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,139.699998915195" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,61.8499994575977,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="527.03331498421,84.3999997468789">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="243.933317033119,184.133332019515"
+              Start="0,0"
+              End="243.933317033119,176.633332019515">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,59.2605312459683" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,59.2605312459683"
+                    Point2="0,63.2605312459683"
+                    Point3="4,63.2605312459683" />
+                  <mssgle:LineSegment
+                    End="239.933317033119,63.2605312459683" />
+                  <mssgle:CubicBezierSegment
+                    Point1="239.933317033119,63.2605312459683"
+                    Point2="243.933317033119,63.2605312459683"
+                    Point3="243.933317033119,67.2605312459683" />
+                  <mssgle:LineSegment
+                    End="243.933317033119,176.633332019515" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="113.96665851656,68.2605312459683,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Execute on Monday\Load Data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Execute on Monday\Load Data\OLE DB Destination"
+          TopLeft="299.166650320921,182.866665395035" />
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\Execute on Monday\Load Data\OLE DB Source"
+          TopLeft="302.499983472129,45.9333330139187" />
+        <EdgeLayout
+          Id="Package\Execute on Monday\Load Data.Paths[OLE DB Source Output]"
+          TopLeft="381.633316896525,87.5333330139187">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,95.333332381116"
+              Start="0,0"
+              End="0,87.833332381116">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,87.833332381116" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Execute on Monday\Load Data\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Execute on Monday\Load Data\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Execute on Wendesday\Load Data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\Execute on Wendesday\Load Data\OLE DB Source"
+          TopLeft="302.499983472129,45.9333330139187" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Execute on Wendesday\Load Data\OLE DB Destination"
+          TopLeft="299.166650320921,182.866665395035" />
+        <EdgeLayout
+          Id="Package\Execute on Wendesday\Load Data.Paths[OLE DB Source Output]"
+          TopLeft="381.633316896525,87.5333330139187">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,95.333332381116"
+              Start="0,0"
+              End="0,87.833332381116">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,87.833332381116" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Execute on Weekend\Load Data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\Execute on Weekend\Load Data\OLE DB Source"
+          TopLeft="302.499983472129,45.9333330139187" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Execute on Weekend\Load Data\OLE DB Destination"
+          TopLeft="299.166650320921,182.866665395035" />
+        <EdgeLayout
+          Id="Package\Execute on Weekend\Load Data.Paths[OLE DB Source Output]"
+          TopLeft="381.633316896525,87.5333330139187">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,95.333332381116"
+              Start="0,0"
+              End="0,87.833332381116">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,87.833332381116" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36203.30 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "17 Execute some part of SSIS package on Monday and rest on Weekend", "17 Execute some part of SSIS package on Monday and rest on Weekend\17 Execute some part of SSIS package on Monday and rest on Weekend.dtproj", "{D2D81A9D-0E46-C0E8-318C-85D30F3FD8B2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D2D81A9D-0E46-C0E8-318C-85D30F3FD8B2}.Development|Default.ActiveCfg = Development
+		{D2D81A9D-0E46-C0E8-318C-85D30F3FD8B2}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FAF6E245-B3B2-4DAD-9008-C2E837ECE657}
+	EndGlobalSection
+EndGlobal

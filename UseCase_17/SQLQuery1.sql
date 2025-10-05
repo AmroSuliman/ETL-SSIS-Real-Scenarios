@@ -1,0 +1,1 @@
+SELECT datename(DW,GETDATE())

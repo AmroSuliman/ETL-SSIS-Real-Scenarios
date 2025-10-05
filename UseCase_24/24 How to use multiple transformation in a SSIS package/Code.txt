@@ -1,0 +1,44 @@
+SSIS expression: ((DT_WSTR,20)HireDate >= "2006-01-01" && (DT_WSTR,20)HireDate <= "2008-12-31" ? "Senior" : ((DT_WSTR,20)HireDate >= "2009-01-01" && (DT_WSTR,20)HireDate <= "2010-12-31") ? "Intermediate" : (DT_WSTR,20)HireDate >= "2011-01-01" && (DT_WSTR,20)HireDate <= "2013-12-31" ? "Junior" : "")
+
+Script component code:
+
+	 if (Row.Gender == "M" && Row.MaritalStatus == "S")
+        {
+            Row.Title = "Master";
+        }
+        else if (Row.Gender == "M" && Row.MaritalStatus == "M")
+        {
+            Row.Title = "Mister";
+        }
+
+        else if (Row.Gender == "F" && Row.MaritalStatus == "S")
+        {
+            Row.Title = "Miss";
+        }
+
+        else if (Row.Gender == "F" && Row.MaritalStatus == "M")
+        {
+            Row.Title = "Missus";
+        }
+
+
+=========================================================
+
+1. **Add a new column "Level"** using SSIS transformation like below:
+
+   * If a person is hired between 2006 and 2008 then "Senior"
+   * If a person is hired between 2009 and 2010 then "Intermediate"
+   * If a person is hired between 2011 and 2013 then "Junior"
+
+2. **Add a new column "Title"** using SSIS transformations like below:
+
+   * If Gender is M and Marital Status is M then "Master"
+   * If Gender is M and Marital Status is S then "Mister"
+   * If Gender is F and Marital Status is S then "Miss"
+   * If Gender is F and Marital Status is M then "Missus"
+
+3. **Add a new column "LoadDate"** using SSIS transformation.
+
+4. **Make a copy of BusinessEntityId** and call it as **Id**.
+
+5. **Insert the data into a CSV file**, sorted on **HireDate**.

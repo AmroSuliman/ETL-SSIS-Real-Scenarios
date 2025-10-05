@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36203.30 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "24 How to use multiple transformation in a SSIS package", "24 How to use multiple transformation in a SSIS package\24 How to use multiple transformation in a SSIS package.dtproj", "{9872AE89-EB9C-42A6-8D32-CE8AD2B1AD74}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9872AE89-EB9C-42A6-8D32-CE8AD2B1AD74}.Development|Default.ActiveCfg = Development
+		{9872AE89-EB9C-42A6-8D32-CE8AD2B1AD74}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D3FE4AA5-8781-4388-824B-469FDD2C27B3}
+	EndGlobalSection
+EndGlobal

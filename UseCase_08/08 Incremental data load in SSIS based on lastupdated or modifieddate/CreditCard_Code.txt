@@ -1,0 +1,39 @@
+--get the max lastmodified from dest
+IF OBJECT_ID(N'dbo.ZZ_CreditCard', N'U') IS NOT NULL
+drop table ZZ_CreditCard
+CREATE TABLE [dbo].[ZZ_CreditCard](
+	[ModifiedDate] [datetime] NULL,
+	[CreditCardID] [int] NULL,
+	[CardType] [nvarchar](50) NULL,
+	[CardNumber] [nvarchar](25) NULL,
+	[ExpMonth] [tinyint] NULL,
+	[ExpYear] [smallint] NULL
+) ON [PRIMARY]
+select DATEADD (ss, 1, max(lastupdatedvalue)) from config_table where TableName = '[Sales].[CreditCard]'
+
+---------------------------------
+--Get the new or modified data
+--Source
+select * from [Sales].[CreditCard] where ModifiedDate > ?
+--Lookup
+sselect CreditCardID from [Sales].[CreditCard]
+
+-----------
+--Update data
+
+declare @updatedrecords int
+UPDATE a
+   SET a.[CardType] = b.CardType
+      ,a.[CardNumber] = b.CardNumber
+      ,a.[ExpMonth] = b.ExpMonth
+      ,a.[ExpYear] = b.ExpYear
+      ,a.[ModifiedDate] = b.ModifiedDate
+from [Sales].[CreditCard] a inner join [dbo].[ZZ_CreditCard] b
+on a.CreditCardID = b.CreditCardID
+set @updatedrecords = (select @@ROWCOUNT)
+insert into audit_log
+select 'Incremental Data Update.dtsx', '[Sales].[CreditCard]',?,@updatedrecords, getdate()
+update config_table
+set Lastupdatedvalue = (select max(ModifiedDate) from [Sales].[CreditCard])
+where tablename = '[Sales].[CreditCard]'
+and (select count(*) from [Sales].[CreditCard])>0

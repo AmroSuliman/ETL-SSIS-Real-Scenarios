@@ -1,0 +1,2305 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/3/2025 5:17:28 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="AMR-SULIMAN"
+  DTS:CreatorName="CONTACTGROUP\amr.soliman"
+  DTS:DTSID="{D2CB4D6C-0777-4E50-B4A4-27EFB6061537}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{32F7FA87-D823-45DB-98C3-6349673BC7AA}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[dest]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{39288A55-54C9-438A-AE6E-DA4EA941C30E}"
+      DTS:ObjectName="dest">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=AdventureWorks2017;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package-{39288A55-54C9-438A-AE6E-DA4EA941C30E}LocalHost.AdventureWorks2017;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[source]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{239205A0-7E9F-4918-A3C2-F0C088884A25}"
+      DTS:ObjectName="source">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=Amr-Suliman;Initial Catalog=AdventureWorks2017;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package-{239205A0-7E9F-4918-A3C2-F0C088884A25}Amr-Suliman.AdventureWorks2017;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{60CBB71F-6874-4096-BE21-FBE810164DC0}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="MaxLastUpdated_CreditCard">
+      <DTS:VariableValue
+        DTS:DataType="7">5/3/2025 6:37:14 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B6E2F81E-88B9-454F-8B1E-8F0827AD11D9}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="MaxLastUpdated_EmailAddress">
+      <DTS:VariableValue
+        DTS:DataType="7">5/3/2025 5:48:39 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4E1FB948-FD7A-4317-BC4C-D52BBF6D28A0}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RecordsInserted_CreditCard">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{EB3FFE59-9FD8-4322-9CB4-EED3698026BA}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RecordsInserted_EmailAddress">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\CreduitCard"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{d399ed80-7503-4e7f-b538-89cfabfac4c4}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="CreduitCard">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\CreduitCard\GET THE MAX MODIFIED FROM THE DEST"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{ac9caa04-cd43-4d61-935a-2e16cbc6f35a}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="GET THE MAX MODIFIED FROM THE DEST"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{239205A0-7E9F-4918-A3C2-F0C088884A25}"
+              SQLTask:SqlStatementSource="IF OBJECT_ID(N'dbo.ZZ_CreditCard', N'U') IS NOT NULL&#xA;drop table ZZ_CreditCard&#xA;CREATE TABLE [dbo].[ZZ_CreditCard](&#xA;&#x9;[ModifiedDate] [datetime] NULL,&#xA;&#x9;[CreditCardID] [int] NULL,&#xA;&#x9;[CardType] [nvarchar](50) NULL,&#xA;&#x9;[CardNumber] [nvarchar](25) NULL,&#xA;&#x9;[ExpMonth] [tinyint] NULL,&#xA;&#x9;[ExpYear] [smallint] NULL&#xA;) ON [PRIMARY]&#xA;select DATEADD (ss, 1, max(lastupdatedvalue)) from config_table where TableName = '[Sales].[CreditCard]'"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::MaxLastUpdated_CreditCard" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\CreduitCard\Get the new or modified data"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{81d13ab7-4eb0-489d-a3e0-ff2069d2cd2d}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Get the new or modified data"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\CreduitCard\Get the new or modified data\CreditCard"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="CreditCard"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Sales].[CreditCard]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">true</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\CreduitCard\Get the new or modified data\CreditCard.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[dest]"
+                      connectionManagerRefId="Package.ConnectionManagers[dest]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\CreduitCard\Get the new or modified data\CreditCard.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\CreduitCard\Get the new or modified data\CreditCard.Inputs[OLE DB Destination Input].Columns[ModifiedDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ModifiedDate"
+                          externalMetadataColumnId="Package\CreduitCard\Get the new or modified data\CreditCard.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                          lineageId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModifiedDate]" />
+                        <inputColumn
+                          refId="Package\CreduitCard\Get the new or modified data\CreditCard.Inputs[OLE DB Destination Input].Columns[CreditCardID]"
+                          cachedDataType="i4"
+                          cachedName="CreditCardID"
+                          externalMetadataColumnId="Package\CreduitCard\Get the new or modified data\CreditCard.Inputs[OLE DB Destination Input].ExternalColumns[CreditCardID]"
+                          lineageId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreditCardID]" />
+                        <inputColumn
+                          refId="Package\CreduitCard\Get the new or modified data\CreditCard.Inputs[OLE DB Destination Input].Columns[CardType]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="CardType"
+                          externalMetadataColumnId="Package\CreduitCard\Get the new or modified data\CreditCard.Inputs[OLE DB Destination Input].ExternalColumns[CardType]"
+                          lineageId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[CardType]" />
+                        <inputColumn
+                          refId="Package\CreduitCard\Get the new or modified data\CreditCard.Inputs[OLE DB Destination Input].Columns[CardNumber]"
+                          cachedDataType="wstr"
+                          cachedLength="25"
+                          cachedName="CardNumber"
+                          externalMetadataColumnId="Package\CreduitCard\Get the new or modified data\CreditCard.Inputs[OLE DB Destination Input].ExternalColumns[CardNumber]"
+                          lineageId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[CardNumber]" />
+                        <inputColumn
+                          refId="Package\CreduitCard\Get the new or modified data\CreditCard.Inputs[OLE DB Destination Input].Columns[ExpMonth]"
+                          cachedDataType="ui1"
+                          cachedName="ExpMonth"
+                          externalMetadataColumnId="Package\CreduitCard\Get the new or modified data\CreditCard.Inputs[OLE DB Destination Input].ExternalColumns[ExpMonth]"
+                          lineageId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[ExpMonth]" />
+                        <inputColumn
+                          refId="Package\CreduitCard\Get the new or modified data\CreditCard.Inputs[OLE DB Destination Input].Columns[ExpYear]"
+                          cachedDataType="i2"
+                          cachedName="ExpYear"
+                          externalMetadataColumnId="Package\CreduitCard\Get the new or modified data\CreditCard.Inputs[OLE DB Destination Input].ExternalColumns[ExpYear]"
+                          lineageId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[ExpYear]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\CreduitCard\Get the new or modified data\CreditCard.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          name="ModifiedDate" />
+                        <externalMetadataColumn
+                          refId="Package\CreduitCard\Get the new or modified data\CreditCard.Inputs[OLE DB Destination Input].ExternalColumns[CreditCardID]"
+                          dataType="i4"
+                          name="CreditCardID" />
+                        <externalMetadataColumn
+                          refId="Package\CreduitCard\Get the new or modified data\CreditCard.Inputs[OLE DB Destination Input].ExternalColumns[CardType]"
+                          dataType="wstr"
+                          length="50"
+                          name="CardType" />
+                        <externalMetadataColumn
+                          refId="Package\CreduitCard\Get the new or modified data\CreditCard.Inputs[OLE DB Destination Input].ExternalColumns[CardNumber]"
+                          dataType="wstr"
+                          length="25"
+                          name="CardNumber" />
+                        <externalMetadataColumn
+                          refId="Package\CreduitCard\Get the new or modified data\CreditCard.Inputs[OLE DB Destination Input].ExternalColumns[ExpMonth]"
+                          dataType="ui1"
+                          name="ExpMonth" />
+                        <externalMetadataColumn
+                          refId="Package\CreduitCard\Get the new or modified data\CreditCard.Inputs[OLE DB Destination Input].ExternalColumns[ExpYear]"
+                          dataType="i2"
+                          name="ExpYear" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\CreduitCard\Get the new or modified data\CreditCard.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\CreduitCard\Get the new or modified data\CreditCard.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\CreduitCard\Get the new or modified data\CreditCard.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\CreduitCard\Get the new or modified data\CreditCard.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\CreduitCard\Get the new or modified data\CreditCard.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\CreduitCard\Get the new or modified data\CreditCard.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\CreduitCard\Get the new or modified data\Lookup"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="Lookup"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select[CreditCardID] from [Sales].[CreditCard]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select[CreditCardID] from [Sales].[CreditCard]) [refTable]
+where [refTable].[CreditCardID] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="CreditCardID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreditCardID]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\CreduitCard\Get the new or modified data\Lookup.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[dest]"
+                      connectionManagerRefId="Package.ConnectionManagers[dest]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\CreduitCard\Get the new or modified data\Lookup.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\CreduitCard\Get the new or modified data\Lookup.Inputs[Lookup Input].Columns[CreditCardID]"
+                          cachedDataType="i4"
+                          cachedName="CreditCardID"
+                          lineageId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreditCardID]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">CreditCardID</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\CreduitCard\Get the new or modified data\Lookup.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\CreduitCard\Get the new or modified data\Lookup.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\CreduitCard\Get the new or modified data\Lookup.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\CreduitCard\Get the new or modified data\Lookup.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\CreduitCard\Get the new or modified data\Lookup.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\CreduitCard\Get the new or modified data\Lookup.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\CreduitCard\Get the new or modified data\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\CreduitCard\Get the new or modified data\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\CreduitCard\Get the new or modified data\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\CreduitCard\Get the new or modified data\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\CreduitCard\Get the new or modified data\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select *
+from [Sales].[CreditCard]
+where  ModifiedDate &gt;?</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping">"Parameter0:Input",{60CBB71F-6874-4096-BE21-FBE810164DC0};</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[source]"
+                      connectionManagerRefId="Package.ConnectionManagers[source]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                          lineageId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                          name="ModifiedDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreditCardID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreditCardID]"
+                          lineageId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreditCardID]"
+                          name="CreditCardID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[CardType]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CardType]"
+                          length="50"
+                          lineageId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[CardType]"
+                          name="CardType"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[CardNumber]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CardNumber]"
+                          length="25"
+                          lineageId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[CardNumber]"
+                          name="CardNumber"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[ExpMonth]"
+                          dataType="ui1"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ExpMonth]"
+                          lineageId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[ExpMonth]"
+                          name="ExpMonth"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[ExpYear]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ExpYear]"
+                          lineageId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[ExpYear]"
+                          name="ExpYear"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          name="ModifiedDate" />
+                        <externalMetadataColumn
+                          refId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreditCardID]"
+                          dataType="i4"
+                          name="CreditCardID" />
+                        <externalMetadataColumn
+                          refId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CardType]"
+                          dataType="wstr"
+                          length="50"
+                          name="CardType" />
+                        <externalMetadataColumn
+                          refId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CardNumber]"
+                          dataType="wstr"
+                          length="25"
+                          name="CardNumber" />
+                        <externalMetadataColumn
+                          refId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ExpMonth]"
+                          dataType="ui1"
+                          name="ExpMonth" />
+                        <externalMetadataColumn
+                          refId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ExpYear]"
+                          dataType="i2"
+                          name="ExpYear" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreditCardID]"
+                          dataType="i4"
+                          lineageId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreditCardID]"
+                          name="CreditCardID" />
+                        <outputColumn
+                          refId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CardType]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CardType]"
+                          name="CardType" />
+                        <outputColumn
+                          refId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CardNumber]"
+                          dataType="wstr"
+                          length="25"
+                          lineageId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CardNumber]"
+                          name="CardNumber" />
+                        <outputColumn
+                          refId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ExpMonth]"
+                          dataType="ui1"
+                          lineageId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ExpMonth]"
+                          name="ExpMonth" />
+                        <outputColumn
+                          refId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ExpYear]"
+                          dataType="i2"
+                          lineageId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ExpYear]"
+                          name="ExpYear" />
+                        <outputColumn
+                          refId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                          name="ModifiedDate" />
+                        <outputColumn
+                          refId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\CreduitCard\Get the new or modified data\Row Count"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="Row Count">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::RecordsInserted_CreditCard</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\CreduitCard\Get the new or modified data\Row Count.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\CreduitCard\Get the new or modified data\Row Count.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\CreduitCard\Get the new or modified data\Row Count.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\CreduitCard\Get the new or modified data\ZZ_CreditCard"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="ZZ_CreditCard"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[ZZ_CreditCard]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\CreduitCard\Get the new or modified data\ZZ_CreditCard.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[dest]"
+                      connectionManagerRefId="Package.ConnectionManagers[dest]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\CreduitCard\Get the new or modified data\ZZ_CreditCard.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\CreduitCard\Get the new or modified data\ZZ_CreditCard.Inputs[OLE DB Destination Input].Columns[ModifiedDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ModifiedDate"
+                          externalMetadataColumnId="Package\CreduitCard\Get the new or modified data\ZZ_CreditCard.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                          lineageId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModifiedDate]" />
+                        <inputColumn
+                          refId="Package\CreduitCard\Get the new or modified data\ZZ_CreditCard.Inputs[OLE DB Destination Input].Columns[CreditCardID]"
+                          cachedDataType="i4"
+                          cachedName="CreditCardID"
+                          externalMetadataColumnId="Package\CreduitCard\Get the new or modified data\ZZ_CreditCard.Inputs[OLE DB Destination Input].ExternalColumns[CreditCardID]"
+                          lineageId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreditCardID]" />
+                        <inputColumn
+                          refId="Package\CreduitCard\Get the new or modified data\ZZ_CreditCard.Inputs[OLE DB Destination Input].Columns[CardType]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="CardType"
+                          externalMetadataColumnId="Package\CreduitCard\Get the new or modified data\ZZ_CreditCard.Inputs[OLE DB Destination Input].ExternalColumns[CardType]"
+                          lineageId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[CardType]" />
+                        <inputColumn
+                          refId="Package\CreduitCard\Get the new or modified data\ZZ_CreditCard.Inputs[OLE DB Destination Input].Columns[CardNumber]"
+                          cachedDataType="wstr"
+                          cachedLength="25"
+                          cachedName="CardNumber"
+                          externalMetadataColumnId="Package\CreduitCard\Get the new or modified data\ZZ_CreditCard.Inputs[OLE DB Destination Input].ExternalColumns[CardNumber]"
+                          lineageId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[CardNumber]" />
+                        <inputColumn
+                          refId="Package\CreduitCard\Get the new or modified data\ZZ_CreditCard.Inputs[OLE DB Destination Input].Columns[ExpMonth]"
+                          cachedDataType="ui1"
+                          cachedName="ExpMonth"
+                          externalMetadataColumnId="Package\CreduitCard\Get the new or modified data\ZZ_CreditCard.Inputs[OLE DB Destination Input].ExternalColumns[ExpMonth]"
+                          lineageId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[ExpMonth]" />
+                        <inputColumn
+                          refId="Package\CreduitCard\Get the new or modified data\ZZ_CreditCard.Inputs[OLE DB Destination Input].Columns[ExpYear]"
+                          cachedDataType="i2"
+                          cachedName="ExpYear"
+                          externalMetadataColumnId="Package\CreduitCard\Get the new or modified data\ZZ_CreditCard.Inputs[OLE DB Destination Input].ExternalColumns[ExpYear]"
+                          lineageId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[ExpYear]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\CreduitCard\Get the new or modified data\ZZ_CreditCard.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          name="ModifiedDate" />
+                        <externalMetadataColumn
+                          refId="Package\CreduitCard\Get the new or modified data\ZZ_CreditCard.Inputs[OLE DB Destination Input].ExternalColumns[CreditCardID]"
+                          dataType="i4"
+                          name="CreditCardID" />
+                        <externalMetadataColumn
+                          refId="Package\CreduitCard\Get the new or modified data\ZZ_CreditCard.Inputs[OLE DB Destination Input].ExternalColumns[CardType]"
+                          dataType="wstr"
+                          length="50"
+                          name="CardType" />
+                        <externalMetadataColumn
+                          refId="Package\CreduitCard\Get the new or modified data\ZZ_CreditCard.Inputs[OLE DB Destination Input].ExternalColumns[CardNumber]"
+                          dataType="wstr"
+                          length="25"
+                          name="CardNumber" />
+                        <externalMetadataColumn
+                          refId="Package\CreduitCard\Get the new or modified data\ZZ_CreditCard.Inputs[OLE DB Destination Input].ExternalColumns[ExpMonth]"
+                          dataType="ui1"
+                          name="ExpMonth" />
+                        <externalMetadataColumn
+                          refId="Package\CreduitCard\Get the new or modified data\ZZ_CreditCard.Inputs[OLE DB Destination Input].ExternalColumns[ExpYear]"
+                          dataType="i2"
+                          name="ExpYear" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\CreduitCard\Get the new or modified data\ZZ_CreditCard.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\CreduitCard\Get the new or modified data\ZZ_CreditCard.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\CreduitCard\Get the new or modified data\ZZ_CreditCard.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\CreduitCard\Get the new or modified data\ZZ_CreditCard.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\CreduitCard\Get the new or modified data\ZZ_CreditCard.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\CreduitCard\Get the new or modified data\ZZ_CreditCard.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\CreduitCard\Get the new or modified data.Paths[Lookup Match Output]"
+                  endId="Package\CreduitCard\Get the new or modified data\ZZ_CreditCard.Inputs[OLE DB Destination Input]"
+                  name="Lookup Match Output"
+                  startId="Package\CreduitCard\Get the new or modified data\Lookup.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\CreduitCard\Get the new or modified data.Paths[Lookup No Match Output]"
+                  endId="Package\CreduitCard\Get the new or modified data\Row Count.Inputs[Row Count Input 1]"
+                  name="Lookup No Match Output"
+                  startId="Package\CreduitCard\Get the new or modified data\Lookup.Outputs[Lookup No Match Output]" />
+                <path
+                  refId="Package\CreduitCard\Get the new or modified data.Paths[OLE DB Source Output]"
+                  endId="Package\CreduitCard\Get the new or modified data\Lookup.Inputs[Lookup Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\CreduitCard\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\CreduitCard\Get the new or modified data.Paths[Row Count Output 1]"
+                  endId="Package\CreduitCard\Get the new or modified data\CreditCard.Inputs[OLE DB Destination Input]"
+                  name="Row Count Output 1"
+                  startId="Package\CreduitCard\Get the new or modified data\Row Count.Outputs[Row Count Output 1]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\CreduitCard\Update Data"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{877ed66e-6c45-44ff-a431-6999456a96fe}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Update Data"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{39288A55-54C9-438A-AE6E-DA4EA941C30E}"
+              SQLTask:SqlStatementSource="declare @updatedrecords int&#xA;UPDATE a&#xA;   SET a.[CardType] = b.CardType&#xA;      ,a.[CardNumber] = b.CardNumber&#xA;      ,a.[ExpMonth] = b.ExpMonth&#xA;      ,a.[ExpYear] = b.ExpYear&#xA;      ,a.[ModifiedDate] = b.ModifiedDate&#xA;from [Sales].[CreditCard] a inner join [dbo].[ZZ_CreditCard] b&#xA;on a.CreditCardID = b.CreditCardID&#xA;set @updatedrecords = (select @@ROWCOUNT)&#xA;insert into audit_log&#xA;select 'Incremental Data Update.dtsx', '[Sales].[CreditCard]',?,@updatedrecords, getdate()&#xA;update config_table&#xA;set Lastupdatedvalue = (select max(ModifiedDate) from [Sales].[CreditCard])&#xA;where tablename = '[Sales].[CreditCard]'&#xA;and (select count(*) from [Sales].[CreditCard])&gt;0" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::RecordsInserted_CreditCard"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\CreduitCard.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{9c626b84-f70f-4189-8210-7acc4e022fb6}"
+          DTS:From="Package\CreduitCard\GET THE MAX MODIFIED FROM THE DEST"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\CreduitCard\Get the new or modified data" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\CreduitCard.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{69d0dc10-c1d6-4d63-b1d8-060c3962ed46}"
+          DTS:From="Package\CreduitCard\Get the new or modified data"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\CreduitCard\Update Data" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\EmailAddress"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{C52B9420-2109-40ED-AE45-843733ACA530}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EmailAddress">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\EmailAddress\GET THE MAX MODIFIED FROM THE DEST"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{5AF039CB-A3DE-41E7-9B48-9E219275D1CC}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="GET THE MAX MODIFIED FROM THE DEST"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{239205A0-7E9F-4918-A3C2-F0C088884A25}"
+              SQLTask:SqlStatementSource="select max(lastupdatedvalue) &#xA;from config_table&#xA;where TableName =' [Person].[EmailAddress]'"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::MaxLastUpdated_EmailAddress" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\EmailAddress\Get the new or modified data"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{68C3B3CD-DFAB-4BB6-8053-312819C355D7}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Get the new or modified data"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\EmailAddress\Get the new or modified data\EmailAddress"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="EmailAddress"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Person].[EmailAddress]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">true</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\EmailAddress\Get the new or modified data\EmailAddress.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[dest]"
+                      connectionManagerRefId="Package.ConnectionManagers[dest]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\EmailAddress\Get the new or modified data\EmailAddress.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\EmailAddress\Get the new or modified data\EmailAddress.Inputs[OLE DB Destination Input].Columns[BusinessEntityID]"
+                          cachedDataType="i4"
+                          cachedName="BusinessEntityID"
+                          externalMetadataColumnId="Package\EmailAddress\Get the new or modified data\EmailAddress.Inputs[OLE DB Destination Input].ExternalColumns[BusinessEntityID]"
+                          lineageId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[BusinessEntityID]" />
+                        <inputColumn
+                          refId="Package\EmailAddress\Get the new or modified data\EmailAddress.Inputs[OLE DB Destination Input].Columns[EmailAddressID]"
+                          cachedDataType="i4"
+                          cachedName="EmailAddressID"
+                          externalMetadataColumnId="Package\EmailAddress\Get the new or modified data\EmailAddress.Inputs[OLE DB Destination Input].ExternalColumns[EmailAddressID]"
+                          lineageId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[EmailAddressID]" />
+                        <inputColumn
+                          refId="Package\EmailAddress\Get the new or modified data\EmailAddress.Inputs[OLE DB Destination Input].Columns[EmailAddress]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="EmailAddress"
+                          externalMetadataColumnId="Package\EmailAddress\Get the new or modified data\EmailAddress.Inputs[OLE DB Destination Input].ExternalColumns[EmailAddress]"
+                          lineageId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[EmailAddress]" />
+                        <inputColumn
+                          refId="Package\EmailAddress\Get the new or modified data\EmailAddress.Inputs[OLE DB Destination Input].Columns[rowguid]"
+                          cachedDataType="guid"
+                          cachedName="rowguid"
+                          externalMetadataColumnId="Package\EmailAddress\Get the new or modified data\EmailAddress.Inputs[OLE DB Destination Input].ExternalColumns[rowguid]"
+                          lineageId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[rowguid]" />
+                        <inputColumn
+                          refId="Package\EmailAddress\Get the new or modified data\EmailAddress.Inputs[OLE DB Destination Input].Columns[ModifiedDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ModifiedDate"
+                          externalMetadataColumnId="Package\EmailAddress\Get the new or modified data\EmailAddress.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                          lineageId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModifiedDate]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\EmailAddress\Get the new or modified data\EmailAddress.Inputs[OLE DB Destination Input].ExternalColumns[BusinessEntityID]"
+                          dataType="i4"
+                          name="BusinessEntityID" />
+                        <externalMetadataColumn
+                          refId="Package\EmailAddress\Get the new or modified data\EmailAddress.Inputs[OLE DB Destination Input].ExternalColumns[EmailAddressID]"
+                          dataType="i4"
+                          name="EmailAddressID" />
+                        <externalMetadataColumn
+                          refId="Package\EmailAddress\Get the new or modified data\EmailAddress.Inputs[OLE DB Destination Input].ExternalColumns[EmailAddress]"
+                          dataType="wstr"
+                          length="50"
+                          name="EmailAddress" />
+                        <externalMetadataColumn
+                          refId="Package\EmailAddress\Get the new or modified data\EmailAddress.Inputs[OLE DB Destination Input].ExternalColumns[rowguid]"
+                          dataType="guid"
+                          name="rowguid" />
+                        <externalMetadataColumn
+                          refId="Package\EmailAddress\Get the new or modified data\EmailAddress.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          name="ModifiedDate" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\EmailAddress\Get the new or modified data\EmailAddress.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\EmailAddress\Get the new or modified data\EmailAddress.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\EmailAddress\Get the new or modified data\EmailAddress.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\EmailAddress\Get the new or modified data\EmailAddress.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\EmailAddress\Get the new or modified data\EmailAddress.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\EmailAddress\Get the new or modified data\EmailAddress.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\EmailAddress\Get the new or modified data\Lookup"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="Lookup"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select [EmailAddressID] 
+from [Person].[EmailAddress]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select [EmailAddressID] 
+from [Person].[EmailAddress]) [refTable]
+where [refTable].[EmailAddressID] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="EmailAddressID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[EmailAddressID]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\EmailAddress\Get the new or modified data\Lookup.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[dest]"
+                      connectionManagerRefId="Package.ConnectionManagers[dest]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\EmailAddress\Get the new or modified data\Lookup.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\EmailAddress\Get the new or modified data\Lookup.Inputs[Lookup Input].Columns[EmailAddressID]"
+                          cachedDataType="i4"
+                          cachedName="EmailAddressID"
+                          lineageId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[EmailAddressID]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">EmailAddressID</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\EmailAddress\Get the new or modified data\Lookup.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\EmailAddress\Get the new or modified data\Lookup.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\EmailAddress\Get the new or modified data\Lookup.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\EmailAddress\Get the new or modified data\Lookup.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\EmailAddress\Get the new or modified data\Lookup.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\EmailAddress\Get the new or modified data\Lookup.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\EmailAddress\Get the new or modified data\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\EmailAddress\Get the new or modified data\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\EmailAddress\Get the new or modified data\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\EmailAddress\Get the new or modified data\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\EmailAddress\Get the new or modified data\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select *
+from [Person].[EmailAddress]
+where  ModifiedDate &gt;?</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping">"Parameter0:Input",{B6E2F81E-88B9-454F-8B1E-8F0827AD11D9};</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[source]"
+                      connectionManagerRefId="Package.ConnectionManagers[source]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[BusinessEntityID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BusinessEntityID]"
+                          lineageId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[BusinessEntityID]"
+                          name="BusinessEntityID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[EmailAddressID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[EmailAddressID]"
+                          lineageId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[EmailAddressID]"
+                          name="EmailAddressID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[EmailAddress]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[EmailAddress]"
+                          length="50"
+                          lineageId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[EmailAddress]"
+                          name="EmailAddress"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[rowguid]"
+                          dataType="guid"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[rowguid]"
+                          lineageId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[rowguid]"
+                          name="rowguid"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                          lineageId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                          name="ModifiedDate"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BusinessEntityID]"
+                          dataType="i4"
+                          name="BusinessEntityID" />
+                        <externalMetadataColumn
+                          refId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[EmailAddressID]"
+                          dataType="i4"
+                          name="EmailAddressID" />
+                        <externalMetadataColumn
+                          refId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[EmailAddress]"
+                          dataType="wstr"
+                          length="50"
+                          name="EmailAddress" />
+                        <externalMetadataColumn
+                          refId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[rowguid]"
+                          dataType="guid"
+                          name="rowguid" />
+                        <externalMetadataColumn
+                          refId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          name="ModifiedDate" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BusinessEntityID]"
+                          dataType="i4"
+                          lineageId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BusinessEntityID]"
+                          name="BusinessEntityID" />
+                        <outputColumn
+                          refId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[EmailAddressID]"
+                          dataType="i4"
+                          lineageId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[EmailAddressID]"
+                          name="EmailAddressID" />
+                        <outputColumn
+                          refId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[EmailAddress]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[EmailAddress]"
+                          name="EmailAddress" />
+                        <outputColumn
+                          refId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[rowguid]"
+                          dataType="guid"
+                          lineageId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[rowguid]"
+                          name="rowguid" />
+                        <outputColumn
+                          refId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                          name="ModifiedDate" />
+                        <outputColumn
+                          refId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\EmailAddress\Get the new or modified data\Row Count"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="Row Count">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::RecordsInserted_EmailAddress</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\EmailAddress\Get the new or modified data\Row Count.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\EmailAddress\Get the new or modified data\Row Count.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\EmailAddress\Get the new or modified data\Row Count.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\EmailAddress\Get the new or modified data\ZZ_EamilAddress"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="ZZ_EamilAddress"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[ZZ_EamilAddress]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\EmailAddress\Get the new or modified data\ZZ_EamilAddress.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[dest]"
+                      connectionManagerRefId="Package.ConnectionManagers[dest]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\EmailAddress\Get the new or modified data\ZZ_EamilAddress.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\EmailAddress\Get the new or modified data\ZZ_EamilAddress.Inputs[OLE DB Destination Input].Columns[BusinessEntityID]"
+                          cachedDataType="i4"
+                          cachedName="BusinessEntityID"
+                          externalMetadataColumnId="Package\EmailAddress\Get the new or modified data\ZZ_EamilAddress.Inputs[OLE DB Destination Input].ExternalColumns[BusinessEntityID]"
+                          lineageId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[BusinessEntityID]" />
+                        <inputColumn
+                          refId="Package\EmailAddress\Get the new or modified data\ZZ_EamilAddress.Inputs[OLE DB Destination Input].Columns[EmailAddressID]"
+                          cachedDataType="i4"
+                          cachedName="EmailAddressID"
+                          externalMetadataColumnId="Package\EmailAddress\Get the new or modified data\ZZ_EamilAddress.Inputs[OLE DB Destination Input].ExternalColumns[EmailAddressID]"
+                          lineageId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[EmailAddressID]" />
+                        <inputColumn
+                          refId="Package\EmailAddress\Get the new or modified data\ZZ_EamilAddress.Inputs[OLE DB Destination Input].Columns[EmailAddress]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="EmailAddress"
+                          externalMetadataColumnId="Package\EmailAddress\Get the new or modified data\ZZ_EamilAddress.Inputs[OLE DB Destination Input].ExternalColumns[EmailAddress]"
+                          lineageId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[EmailAddress]" />
+                        <inputColumn
+                          refId="Package\EmailAddress\Get the new or modified data\ZZ_EamilAddress.Inputs[OLE DB Destination Input].Columns[rowguid]"
+                          cachedDataType="guid"
+                          cachedName="rowguid"
+                          externalMetadataColumnId="Package\EmailAddress\Get the new or modified data\ZZ_EamilAddress.Inputs[OLE DB Destination Input].ExternalColumns[rowguid]"
+                          lineageId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[rowguid]" />
+                        <inputColumn
+                          refId="Package\EmailAddress\Get the new or modified data\ZZ_EamilAddress.Inputs[OLE DB Destination Input].Columns[ModifiedDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ModifiedDate"
+                          externalMetadataColumnId="Package\EmailAddress\Get the new or modified data\ZZ_EamilAddress.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                          lineageId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModifiedDate]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\EmailAddress\Get the new or modified data\ZZ_EamilAddress.Inputs[OLE DB Destination Input].ExternalColumns[BusinessEntityID]"
+                          dataType="i4"
+                          name="BusinessEntityID" />
+                        <externalMetadataColumn
+                          refId="Package\EmailAddress\Get the new or modified data\ZZ_EamilAddress.Inputs[OLE DB Destination Input].ExternalColumns[EmailAddressID]"
+                          dataType="i4"
+                          name="EmailAddressID" />
+                        <externalMetadataColumn
+                          refId="Package\EmailAddress\Get the new or modified data\ZZ_EamilAddress.Inputs[OLE DB Destination Input].ExternalColumns[EmailAddress]"
+                          dataType="wstr"
+                          length="50"
+                          name="EmailAddress" />
+                        <externalMetadataColumn
+                          refId="Package\EmailAddress\Get the new or modified data\ZZ_EamilAddress.Inputs[OLE DB Destination Input].ExternalColumns[rowguid]"
+                          dataType="guid"
+                          name="rowguid" />
+                        <externalMetadataColumn
+                          refId="Package\EmailAddress\Get the new or modified data\ZZ_EamilAddress.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          name="ModifiedDate" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\EmailAddress\Get the new or modified data\ZZ_EamilAddress.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\EmailAddress\Get the new or modified data\ZZ_EamilAddress.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\EmailAddress\Get the new or modified data\ZZ_EamilAddress.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\EmailAddress\Get the new or modified data\ZZ_EamilAddress.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\EmailAddress\Get the new or modified data\ZZ_EamilAddress.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\EmailAddress\Get the new or modified data\ZZ_EamilAddress.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\EmailAddress\Get the new or modified data.Paths[Lookup Match Output]"
+                  endId="Package\EmailAddress\Get the new or modified data\ZZ_EamilAddress.Inputs[OLE DB Destination Input]"
+                  name="Lookup Match Output"
+                  startId="Package\EmailAddress\Get the new or modified data\Lookup.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\EmailAddress\Get the new or modified data.Paths[Lookup No Match Output]"
+                  endId="Package\EmailAddress\Get the new or modified data\Row Count.Inputs[Row Count Input 1]"
+                  name="Lookup No Match Output"
+                  startId="Package\EmailAddress\Get the new or modified data\Lookup.Outputs[Lookup No Match Output]" />
+                <path
+                  refId="Package\EmailAddress\Get the new or modified data.Paths[OLE DB Source Output]"
+                  endId="Package\EmailAddress\Get the new or modified data\Lookup.Inputs[Lookup Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\EmailAddress\Get the new or modified data\OLE DB Source.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\EmailAddress\Get the new or modified data.Paths[Row Count Output 1]"
+                  endId="Package\EmailAddress\Get the new or modified data\EmailAddress.Inputs[OLE DB Destination Input]"
+                  name="Row Count Output 1"
+                  startId="Package\EmailAddress\Get the new or modified data\Row Count.Outputs[Row Count Output 1]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\EmailAddress\Update Data"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{5A613BB8-28F2-4A37-A64E-E09B60E31D0B}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Update Data"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{39288A55-54C9-438A-AE6E-DA4EA941C30E}"
+              SQLTask:SqlStatementSource="declare @updatedrecords int&#xA;UPDATE a&#xA;   SET a.[BusinessEntityID] = b.[BusinessEntityID]&#xA;      ,a.[EmailAddress] = b.EmailAddress&#xA;      ,a.[rowguid] = b.rowguid&#xA;      ,a.[ModifiedDate] = b.ModifiedDate&#xA;from [Person].[EmailAddress] a inner join [dbo].[ZZ_EmailAddress] b&#xA;on a.[EmailAddressID] = b.[EmailAddressID]&#xA;set @updatedrecords = (select @@ROWCOUNT)&#xA;insert into audit_log&#xA;select 'Incremental Data Update.dtsx', '[Person].[EmailAddress]',?,@updatedrecords, getdate()&#xA;update config_table&#xA;set Lastupdatedvalue = (select max(ModifiedDate) from [Person].[EmailAddress])&#xA;where tablename = '[Person].[EmailAddress]'&#xA;and (select count(*) from [Person].[EmailAddress])&gt;0" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::RecordsInserted_EmailAddress"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\EmailAddress.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{3EBFA637-4EA9-4113-9B0F-58B3C57F253F}"
+          DTS:From="Package\EmailAddress\GET THE MAX MODIFIED FROM THE DEST"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\EmailAddress\Get the new or modified data" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\EmailAddress.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{D54BDA75-587E-462A-B431-65FCA42C19E7}"
+          DTS:From="Package\EmailAddress\Get the new or modified data"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\EmailAddress\Update Data" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="296,42.6666666666667"
+          Id="Package\EmailAddress\GET THE MAX MODIFIED FROM THE DEST"
+          TopLeft="34.249998714775,10.5964898307458" />
+        <NodeLayout
+          Size="262,42.6666666666667"
+          Id="Package\EmailAddress\Get the new or modified data"
+          TopLeft="55.4999977648258,64.649120816206" />
+        <EdgeLayout
+          Id="Package\EmailAddress.PrecedenceConstraints[Constraint]"
+          TopLeft="34.249998714775,31.9298231640791">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="21.2499990500509,54.0526309854602"
+              Start="0,0"
+              End="13.7499990500509,54.0526309854602">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-18.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-18.5,0"
+                    Point2="-22.5,0"
+                    Point3="-22.5,4" />
+                  <mssgle:LineSegment
+                    End="-22.5,50.0526309854602" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-22.5,50.0526309854602"
+                    Point2="-22.5,54.0526309854602"
+                    Point3="-18.5,54.0526309854602" />
+                  <mssgle:LineSegment
+                    End="13.7499990500509,54.0526309854602" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="140,42.6666666666667"
+          Id="Package\EmailAddress\Update Data"
+          TopLeft="135.499988488853,139.982453864065" />
+        <EdgeLayout
+          Id="Package\EmailAddress.PrecedenceConstraints[Constraint 1]"
+          TopLeft="186.499997764826,107.315787482873">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="18.9999907240275,32.6666663811919"
+              Start="0,0"
+              End="18.9999907240275,25.1666663811919">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.333333190596" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.333333190596"
+                    Point2="0,16.333333190596"
+                    Point3="4,16.333333190596" />
+                  <mssgle:LineSegment
+                    End="14.9999907240275,16.333333190596" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14.9999907240275,16.333333190596"
+                    Point2="18.9999907240275,16.333333190596"
+                    Point3="18.9999907240275,20.333333190596" />
+                  <mssgle:LineSegment
+                    End="18.9999907240275,25.1666663811919" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="336,256"
+          Size="336,299.333333333334"
+          Id="Package\EmailAddress"
+          TopLeft="4.37499980442195,50.6315783914438" />
+        <NodeLayout
+          Size="296,42.6666666666667"
+          Id="Package\CreduitCard\GET THE MAX MODIFIED FROM THE DEST"
+          TopLeft="34.249998714775,10.5964898307458" />
+        <NodeLayout
+          Size="262,42.6666666666667"
+          Id="Package\CreduitCard\Get the new or modified data"
+          TopLeft="55.4999977648258,64.649120816206" />
+        <NodeLayout
+          Size="140,42.6666666666667"
+          Id="Package\CreduitCard\Update Data"
+          TopLeft="135.499988488853,139.982453864065" />
+        <EdgeLayout
+          Id="Package\CreduitCard.PrecedenceConstraints[Constraint]"
+          TopLeft="34.249998714775,31.9298231640791">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="21.2499990500508,54.0526309854602"
+              Start="0,0"
+              End="13.7499990500508,54.0526309854602">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-18.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-18.5,0"
+                    Point2="-22.5,0"
+                    Point3="-22.5,4" />
+                  <mssgle:LineSegment
+                    End="-22.5,50.0526309854602" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-22.5,50.0526309854602"
+                    Point2="-22.5,54.0526309854602"
+                    Point3="-18.5,54.0526309854602" />
+                  <mssgle:LineSegment
+                    End="13.7499990500508,54.0526309854602" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\CreduitCard.PrecedenceConstraints[Constraint 1]"
+          TopLeft="186.499997764826,107.315787482873">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="18.9999907240275,32.6666663811919"
+              Start="0,0"
+              End="18.9999907240275,25.1666663811919">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.333333190596" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.333333190596"
+                    Point2="0,16.333333190596"
+                    Point3="4,16.333333190596" />
+                  <mssgle:LineSegment
+                    End="14.9999907240275,16.333333190596" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14.9999907240275,16.333333190596"
+                    Point2="18.9999907240275,16.333333190596"
+                    Point3="18.9999907240275,20.333333190596" />
+                  <mssgle:LineSegment
+                    End="18.9999907240275,25.1666663811919" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="336,256"
+          Size="336,299.333333333334"
+          Id="Package\CreduitCard"
+          TopLeft="382.499982900918,55.4210520230668" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\EmailAddress\Get the new or modified data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="154.666666666667,42.6666666666667"
+          Id="Package\EmailAddress\Get the new or modified data\OLE DB Source"
+          TopLeft="283.749987315387,19.1578945264922" />
+        <NodeLayout
+          Size="114.666666666667,42.6666666666667"
+          Id="Package\EmailAddress\Get the new or modified data\Lookup"
+          TopLeft="284.999987259508,103.999998858101" />
+        <NodeLayout
+          Size="164,42.6666666666667"
+          Id="Package\EmailAddress\Get the new or modified data\ZZ_EamilAddress"
+          TopLeft="376.249983180315,268.210523370891" />
+        <NodeLayout
+          Size="145.333333333334,42.6666666666667"
+          Id="Package\EmailAddress\Get the new or modified data\EmailAddress"
+          TopLeft="146.874993434176,282.57894426576" />
+        <NodeLayout
+          Size="132,42.6666666666667"
+          Id="Package\EmailAddress\Get the new or modified data\Row Count"
+          TopLeft="151.874993210659,182.684208520479" />
+        <EdgeLayout
+          Id="Package\EmailAddress\Get the new or modified data.Paths[OLE DB Source Output]"
+          TopLeft="361.08332064872,61.8245611931588">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-18.7500000558792,42.1754376649417"
+              Start="0,0"
+              End="-18.7500000558792,34.6754376649417">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.0877188324709" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.0877188324709"
+                    Point2="0,21.0877188324709"
+                    Point3="-4,21.0877188324709" />
+                  <mssgle:LineSegment
+                    End="-14.7500000558792,21.0877188324709" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-14.7500000558792,21.0877188324709"
+                    Point2="-18.7500000558792,21.0877188324709"
+                    Point3="-18.7500000558792,25.0877188324709" />
+                  <mssgle:LineSegment
+                    End="-18.7500000558792,34.6754376649417" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\EmailAddress\Get the new or modified data.Paths[Lookup Match Output]"
+          TopLeft="360.111098370619,146.666665524767">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="98.1388848096962,121.543857846124"
+              Start="0,0"
+              End="98.1388848096962,114.043857846124">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.6211162766285" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,45.6211162766285"
+                    Point2="0,49.6211162766285"
+                    Point3="4,49.6211162766285" />
+                  <mssgle:LineSegment
+                    End="94.1388848096962,49.6211162766285" />
+                  <mssgle:CubicBezierSegment
+                    Point1="94.1388848096962,49.6211162766285"
+                    Point2="98.1388848096962,49.6211162766285"
+                    Point3="98.1388848096962,53.6211162766285" />
+                  <mssgle:LineSegment
+                    End="98.1388848096962,114.043857846124" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0.878055686098101,54.6211162766285,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\EmailAddress\Get the new or modified data.Paths[Lookup No Match Output]"
+          TopLeft="324.555542815063,146.666665524767">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-106.680549604405,36.017542995712"
+              Start="0,0"
+              End="-106.680549604405,28.517542995712">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.7044097551301" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.7044097551301"
+                    Point2="0,14.7044097551301"
+                    Point3="-4,14.7044097551301" />
+                  <mssgle:LineSegment
+                    End="-102.680549604405,14.7044097551301" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-102.680549604405,14.7044097551301"
+                    Point2="-106.680549604405,14.7044097551301"
+                    Point3="-106.680549604405,18.7044097551301" />
+                  <mssgle:LineSegment
+                    End="-106.680549604405,28.517542995712" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-109.146661520952,19.7044097551301,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\EmailAddress\Get the new or modified data.Paths[Row Count Output 1]"
+          TopLeft="218.708326655751,225.350875187146">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57.2280690786141"
+              Start="0,0"
+              End="0,49.7280690786141">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.7280690786141" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\EmailAddress\Get the new or modified data\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\EmailAddress\Get the new or modified data\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\EmailAddress\Get the new or modified data\ZZ_EamilAddress">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\EmailAddress\Get the new or modified data\EmailAddress">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\CreduitCard\Get the new or modified data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="156,42.6666666666667"
+          Id="Package\CreduitCard\Get the new or modified data\CreditCard"
+          TopLeft="146.874993434176,282.57894426576" />
+        <NodeLayout
+          Size="150.666666666667,42.6666666666667"
+          Id="Package\CreduitCard\Get the new or modified data\ZZ_CreditCard"
+          TopLeft="372.249983299524,287.210522804647" />
+        <NodeLayout
+          Size="114.666666666667,42.6666666666667"
+          Id="Package\CreduitCard\Get the new or modified data\Lookup"
+          TopLeft="284.999987259508,103.999998858101" />
+        <NodeLayout
+          Size="154.666666666667,42.6666666666667"
+          Id="Package\CreduitCard\Get the new or modified data\OLE DB Source"
+          TopLeft="283.749987315387,19.1578945264922" />
+        <NodeLayout
+          Size="132,42.6666666666667"
+          Id="Package\CreduitCard\Get the new or modified data\Row Count"
+          TopLeft="151.874993210659,182.684208520479" />
+        <EdgeLayout
+          Id="Package\CreduitCard\Get the new or modified data.Paths[OLE DB Source Output]"
+          TopLeft="361.08332064872,61.8245611931588">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-18.7500000558792,42.1754376649417"
+              Start="0,0"
+              End="-18.7500000558792,34.6754376649417">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.0877188324709" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.0877188324709"
+                    Point2="0,21.0877188324709"
+                    Point3="-4,21.0877188324709" />
+                  <mssgle:LineSegment
+                    End="-14.7500000558792,21.0877188324709" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-14.7500000558792,21.0877188324709"
+                    Point2="-18.7500000558792,21.0877188324709"
+                    Point3="-18.7500000558792,25.0877188324709" />
+                  <mssgle:LineSegment
+                    End="-18.7500000558792,34.6754376649417" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\CreduitCard\Get the new or modified data.Paths[Lookup No Match Output]"
+          TopLeft="324.555542815063,146.666665524767">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-106.680549604405,36.017542995712"
+              Start="0,0"
+              End="-106.680549604405,28.517542995712">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.7044097551301" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.7044097551301"
+                    Point2="0,14.7044097551301"
+                    Point3="-4,14.7044097551301" />
+                  <mssgle:LineSegment
+                    End="-102.680549604405,14.7044097551301" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-102.680549604405,14.7044097551301"
+                    Point2="-106.680549604405,14.7044097551301"
+                    Point3="-106.680549604405,18.7044097551301" />
+                  <mssgle:LineSegment
+                    End="-106.680549604405,28.517542995712" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-109.146661520952,19.7044097551301,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\CreduitCard\Get the new or modified data.Paths[Row Count Output 1]"
+          TopLeft="221.374993322417,225.350875187146">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57.2280690786144"
+              Start="0,0"
+              End="0,49.7280690786144">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.7280690786144" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\CreduitCard\Get the new or modified data.Paths[Lookup Match Output]"
+          TopLeft="360.111098370619,146.666665524768">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="87.4722182622386,140.543857279879"
+              Start="0,0"
+              End="87.4722182622386,133.043857279879">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.3779967794002" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,53.3779967794002"
+                    Point2="0,57.3779967794002"
+                    Point3="4,57.3779967794002" />
+                  <mssgle:LineSegment
+                    End="83.4722182622386,57.3779967794002" />
+                  <mssgle:CubicBezierSegment
+                    Point1="83.4722182622386,57.3779967794002"
+                    Point2="87.4722182622386,57.3779967794002"
+                    Point3="87.4722182622386,61.3779967794002" />
+                  <mssgle:LineSegment
+                    End="87.4722182622386,133.043857279879" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-4.45527758763071,62.3779967794002,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\CreduitCard\Get the new or modified data\CreditCard">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\CreduitCard\Get the new or modified data\ZZ_CreditCard">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\CreduitCard\Get the new or modified data\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\CreduitCard\Get the new or modified data\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

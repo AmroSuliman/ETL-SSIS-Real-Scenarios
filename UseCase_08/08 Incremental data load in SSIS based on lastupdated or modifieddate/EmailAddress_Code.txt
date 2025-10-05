@@ -1,0 +1,37 @@
+--get the max lastmodified from dest
+IF OBJECT_ID(N'dbo.zz_EmailAddress', N'U') IS NOT NULL
+drop table zz_EmailAddress
+CREATE TABLE [dbo].[zz_EmailAddress](
+	[BusinessEntityID] [int] NULL,
+	[EmailAddressID] [int] NULL,
+	[EmailAddress] [nvarchar](50) NULL,
+	[rowguid] [uniqueidentifier] NULL,
+	[ModifiedDate] [datetime] NULL
+) ON [PRIMARY]
+select DATEADD (ss, 1, max(lastupdatedvalue)) from config_table where TableName = '[Person].[EmailAddress]'
+
+---------------------------------
+--Get the new or modified data
+--Source
+select * from [Person].[EmailAddress] where ModifiedDate > ?
+--Lookup
+select [EmailAddressID] from [Person].[EmailAddress]
+
+-----------
+--Update data
+
+declare @updatedrecords int
+UPDATE a
+   SET a.[BusinessEntityID] = b.[BusinessEntityID]
+      ,a.[EmailAddress] = b.EmailAddress
+      ,a.[rowguid] = b.rowguid
+      ,a.[ModifiedDate] = b.ModifiedDate
+from [Person].[EmailAddress] a inner join [dbo].[ZZ_EmailAddress] b
+on a.[EmailAddressID] = b.[EmailAddressID]
+set @updatedrecords = (select @@ROWCOUNT)
+insert into audit_log
+select 'Incremental Data Update.dtsx', '[Person].[EmailAddress]',?,@updatedrecords, getdate()
+update config_table
+set Lastupdatedvalue = (select max(ModifiedDate) from [Person].[EmailAddress])
+where tablename = '[Person].[EmailAddress]'
+and (select count(*) from [Person].[EmailAddress])>0

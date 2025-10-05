@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36203.30 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "15 Import a comma delimited file that has comma in data", "15 Import a comma delimited file that has comma in data\15 Import a comma delimited file that has comma in data.dtproj", "{E42A3183-9234-2525-E388-B134C1202C66}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E42A3183-9234-2525-E388-B134C1202C66}.Development|Default.ActiveCfg = Development
+		{E42A3183-9234-2525-E388-B134C1202C66}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2FD29C3A-2AD1-43AE-B45A-693147C2C3B8}
+	EndGlobalSection
+EndGlobal

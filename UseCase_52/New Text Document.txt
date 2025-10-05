@@ -1,0 +1,48 @@
+
+---
+
+### 🔑 Best Practices for SSIS Performance
+
+1. **Execute tasks in Parallel**
+
+   * Running independent tasks simultaneously improves ETL throughput.
+
+2. **Load only required columns from source**
+
+   * Avoid selecting `SELECT *`; pull only the necessary fields.
+
+3. **While using Flat File, use the correct data type**
+
+   * Choosing the wrong data type can cause implicit conversions and slow performance.
+
+4. **While using OLE DB Source, write SQL Command instead of table/view**
+
+   * Fetch only filtered and transformed data at the database level to reduce data load.
+
+5. **Do transformations at the source whenever possible**
+
+   * Example: use SQL `WHERE`, `JOIN`, `CASE` before bringing data into SSIS to minimize in-memory transformations.
+
+6. **Avoid Asynchronous Transformations where possible**
+
+   * These transformations block or slow down data flow since they need to load entire sets before processing.
+
+---
+
+### ⚡ Types of Asynchronous Transformations
+
+| **Semi-Blocking (Medium Performance Impact)** | **Fully Blocking (Slowest)** |
+| --------------------------------------------- | ---------------------------- |
+| Data Mining Query                             | Aggregate                    |
+| Merge                                         | Fuzzy Grouping               |
+| Merge Join                                    | Fuzzy Lookup                 |
+| Pivot                                         | Row Sampling                 |
+| Unpivot                                       | Sort                         |
+| Term Lookup                                   | Term Extraction              |
+| Union All                                     |                              |
+
+---
+
+✅ **Conclusion**: For better SSIS package performance, push transformations to the database, avoid blocking transformations, fetch only necessary data, and design packages to run in parallel.
+
+

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/4/2025 9:40:35 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="AMR-SULIMAN"
+  DTS:CreatorName="CONTACTGROUP\amr.soliman"
+  DTS:DTSID="{1A57E3D5-F05F-496B-B554-0B81D31BEE77}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionGUID="{F1549316-3295-48E3-AB44-56CEA38EB5C9}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables />
+</DTS:Executable>

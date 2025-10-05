@@ -1,0 +1,10 @@
+D:\01_Personal\01-SSIS\UseCase_13\Execute SSIS Package\Execute SSIS Package\bin\Debug\Execute SSIS Package.exe.config
+D:\01_Personal\01-SSIS\UseCase_13\Execute SSIS Package\Execute SSIS Package\bin\Debug\Execute SSIS Package.exe
+D:\01_Personal\01-SSIS\UseCase_13\Execute SSIS Package\Execute SSIS Package\bin\Debug\Execute SSIS Package.pdb
+D:\01_Personal\01-SSIS\UseCase_13\Execute SSIS Package\Execute SSIS Package\bin\Debug\Microsoft.SQLServer.ManagedDTS.dll
+D:\01_Personal\01-SSIS\UseCase_13\Execute SSIS Package\Execute SSIS Package\obj\Debug\Execute SSIS Package.csproj.AssemblyReference.cache
+D:\01_Personal\01-SSIS\UseCase_13\Execute SSIS Package\Execute SSIS Package\obj\Debug\Execute SSIS Package.csproj.CoreCompileInputs.cache
+D:\01_Personal\01-SSIS\UseCase_13\Execute SSIS Package\Execute SSIS Package\obj\Debug\Execute .26752496.Up2Date
+D:\01_Personal\01-SSIS\UseCase_13\Execute SSIS Package\Execute SSIS Package\obj\Debug\Execute SSIS Package.exe
+D:\01_Personal\01-SSIS\UseCase_13\Execute SSIS Package\Execute SSIS Package\obj\Debug\Execute SSIS Package.pdb
+D:\01_Personal\01-SSIS\UseCase_13\Execute SSIS Package\Execute SSIS Package\obj\Debug\Execute SSIS Package.exe.config

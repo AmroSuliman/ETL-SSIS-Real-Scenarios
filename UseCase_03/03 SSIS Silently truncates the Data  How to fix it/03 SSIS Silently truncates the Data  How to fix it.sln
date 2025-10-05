@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "03 SSIS Silently truncates the Data  How to fix it", "03 SSIS Silently truncates the Data  How to fix it\03 SSIS Silently truncates the Data  How to fix it.dtproj", "{A671D64E-62A6-EAE6-BE21-DFB4725F01EF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A671D64E-62A6-EAE6-BE21-DFB4725F01EF}.Development|Default.ActiveCfg = Development
+		{A671D64E-62A6-EAE6-BE21-DFB4725F01EF}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BA4BF038-6447-43DD-BA95-12752F84F8B7}
+	EndGlobalSection
+EndGlobal

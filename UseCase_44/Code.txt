@@ -1,0 +1,30 @@
+public void Main()
+		{
+            string dirName = @"D:\Files";
+            string[] files = Directory.GetFiles(dirName);
+
+            foreach (string file in files)
+            {
+                FileInfo fi = new FileInfo(file);
+                if (fi.LastWriteTime < DateTime.Now.AddMonths(-3))
+                {
+                    int currentmonth = Convert.ToInt32(fi.LastWriteTime.ToString("MM"));
+
+                    //add a day to the date
+
+                    DateTime newdt = fi.LastWriteTime.AddDays(1);
+
+                    int newmonth = Convert.ToInt32(newdt.ToString("MM"));
+
+                    if (currentmonth == newmonth)
+                    {
+                        fi.Delete();
+                    }
+
+                    //  
+                }
+
+            }
+
+            Dts.TaskResult = (int)ScriptResults.Success;
+		}

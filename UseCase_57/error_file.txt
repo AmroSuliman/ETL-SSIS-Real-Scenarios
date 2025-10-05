@@ -1,0 +1,2 @@
+Package: How to log error in ssis script task Time:9/13/2025 5:30:35 PM Error Message:The element cannot be found in a collection. This error happens when you try to retrieve an element from a collection on a container during execution of the package and the element is not there.
+
